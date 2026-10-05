@@ -1,0 +1,14 @@
+node_modules/
+# dist is included for running the demo without Node.js.
+*.local
+.env
+.env.*
+!.env.example
+.github-upload*.json
+work/
+*.log
+.venv/
+__pycache__/
+data/
+*.sqlite3*
+*.lock

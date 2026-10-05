@@ -1,0 +1,1373 @@
+{
+  "schemaVersion": 1,
+  "source": "simulation",
+  "runId": "b7c79a00-a98f-4e5f-b731-1eaa69f4de2a",
+  "baseRevision": 2,
+  "calculatedAt": "2026-10-02T17:51:44.251984+00:00",
+  "baseElapsedSec": 3600,
+  "shiftDurationSec": 28800,
+  "plan": 410,
+  "stationId": "P03",
+  "stationName": "Установка",
+  "stationMode": "stop",
+  "nominalCycleSec": 58,
+  "delayMinutes": 30,
+  "initialGood": 39,
+  "initialRejected": 1,
+  "stationModes": [
+    {
+      "id": "P01",
+      "mode": "normal"
+    },
+    {
+      "id": "P02",
+      "mode": "normal"
+    },
+    {
+      "id": "P03",
+      "mode": "stop"
+    },
+    {
+      "id": "P04",
+      "mode": "normal"
+    },
+    {
+      "id": "P05",
+      "mode": "normal"
+    }
+  ],
+  "results": [
+    {
+      "id": "baseline",
+      "title": "Текущий режим",
+      "recoveryAtSec": null,
+      "recoveryWithinShift": false,
+      "good": 39,
+      "rejected": 1,
+      "planDelta": -371,
+      "planFulfillmentPct": 9.5,
+      "gainVsBaseline": 0,
+      "additionalDowntimeSec": 25200,
+      "series": [
+        {
+          "elapsedSec": 3600,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 3900,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 4200,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 4500,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 4800,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 5100,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 5400,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 5700,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 6000,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 6300,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 6600,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 6900,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 7200,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 7500,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 7800,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 8100,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 8400,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 8700,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 9000,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 9300,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 9600,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 9900,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 10200,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 10500,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 10800,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 11100,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 11400,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 11700,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 12000,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 12300,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 12600,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 12900,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 13200,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 13500,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 13800,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 14100,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 14400,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 14700,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 15000,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 15300,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 15600,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 15900,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 16200,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 16500,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 16800,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 17100,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 17400,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 17700,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 18000,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 18300,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 18600,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 18900,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 19200,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 19500,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 19800,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 20100,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 20400,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 20700,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 21000,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 21300,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 21600,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 21900,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 22200,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 22500,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 22800,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 23100,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 23400,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 23700,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 24000,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 24300,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 24600,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 24900,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 25200,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 25500,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 25800,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 26100,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 26400,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 26700,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 27000,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 27300,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 27600,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 27900,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 28200,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 28500,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 28800,
+          "good": 39,
+          "rejected": 1
+        }
+      ]
+    },
+    {
+      "id": "restore_now",
+      "title": "Восстановить сейчас",
+      "recoveryAtSec": 3600,
+      "recoveryWithinShift": true,
+      "good": 421,
+      "rejected": 17,
+      "planDelta": 11,
+      "planFulfillmentPct": 102.7,
+      "gainVsBaseline": 382,
+      "additionalDowntimeSec": 0,
+      "series": [
+        {
+          "elapsedSec": 3600,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 3900,
+          "good": 42,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 4200,
+          "good": 47,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 4500,
+          "good": 51,
+          "rejected": 2
+        },
+        {
+          "elapsedSec": 4800,
+          "good": 56,
+          "rejected": 2
+        },
+        {
+          "elapsedSec": 5100,
+          "good": 62,
+          "rejected": 2
+        },
+        {
+          "elapsedSec": 5400,
+          "good": 67,
+          "rejected": 2
+        },
+        {
+          "elapsedSec": 5700,
+          "good": 72,
+          "rejected": 2
+        },
+        {
+          "elapsedSec": 6000,
+          "good": 76,
+          "rejected": 3
+        },
+        {
+          "elapsedSec": 6300,
+          "good": 81,
+          "rejected": 3
+        },
+        {
+          "elapsedSec": 6600,
+          "good": 86,
+          "rejected": 3
+        },
+        {
+          "elapsedSec": 6900,
+          "good": 92,
+          "rejected": 3
+        },
+        {
+          "elapsedSec": 7200,
+          "good": 96,
+          "rejected": 4
+        },
+        {
+          "elapsedSec": 7500,
+          "good": 101,
+          "rejected": 4
+        },
+        {
+          "elapsedSec": 7800,
+          "good": 106,
+          "rejected": 4
+        },
+        {
+          "elapsedSec": 8100,
+          "good": 111,
+          "rejected": 4
+        },
+        {
+          "elapsedSec": 8400,
+          "good": 116,
+          "rejected": 4
+        },
+        {
+          "elapsedSec": 8700,
+          "good": 121,
+          "rejected": 5
+        },
+        {
+          "elapsedSec": 9000,
+          "good": 126,
+          "rejected": 5
+        },
+        {
+          "elapsedSec": 9300,
+          "good": 131,
+          "rejected": 5
+        },
+        {
+          "elapsedSec": 9600,
+          "good": 136,
+          "rejected": 5
+        },
+        {
+          "elapsedSec": 9900,
+          "good": 141,
+          "rejected": 5
+        },
+        {
+          "elapsedSec": 10200,
+          "good": 145,
+          "rejected": 6
+        },
+        {
+          "elapsedSec": 10500,
+          "good": 151,
+          "rejected": 6
+        },
+        {
+          "elapsedSec": 10800,
+          "good": 155,
+          "rejected": 6
+        },
+        {
+          "elapsedSec": 11100,
+          "good": 160,
+          "rejected": 6
+        },
+        {
+          "elapsedSec": 11400,
+          "good": 164,
+          "rejected": 6
+        },
+        {
+          "elapsedSec": 11700,
+          "good": 168,
+          "rejected": 7
+        },
+        {
+          "elapsedSec": 12000,
+          "good": 173,
+          "rejected": 7
+        },
+        {
+          "elapsedSec": 12300,
+          "good": 177,
+          "rejected": 7
+        },
+        {
+          "elapsedSec": 12600,
+          "good": 182,
+          "rejected": 7
+        },
+        {
+          "elapsedSec": 12900,
+          "good": 186,
+          "rejected": 7
+        },
+        {
+          "elapsedSec": 13200,
+          "good": 191,
+          "rejected": 7
+        },
+        {
+          "elapsedSec": 13500,
+          "good": 195,
+          "rejected": 8
+        },
+        {
+          "elapsedSec": 13800,
+          "good": 199,
+          "rejected": 8
+        },
+        {
+          "elapsedSec": 14100,
+          "good": 204,
+          "rejected": 8
+        },
+        {
+          "elapsedSec": 14400,
+          "good": 209,
+          "rejected": 8
+        },
+        {
+          "elapsedSec": 14700,
+          "good": 213,
+          "rejected": 8
+        },
+        {
+          "elapsedSec": 15000,
+          "good": 217,
+          "rejected": 9
+        },
+        {
+          "elapsedSec": 15300,
+          "good": 221,
+          "rejected": 9
+        },
+        {
+          "elapsedSec": 15600,
+          "good": 226,
+          "rejected": 9
+        },
+        {
+          "elapsedSec": 15900,
+          "good": 231,
+          "rejected": 9
+        },
+        {
+          "elapsedSec": 16200,
+          "good": 235,
+          "rejected": 9
+        },
+        {
+          "elapsedSec": 16500,
+          "good": 240,
+          "rejected": 9
+        },
+        {
+          "elapsedSec": 16800,
+          "good": 243,
+          "rejected": 10
+        },
+        {
+          "elapsedSec": 17100,
+          "good": 248,
+          "rejected": 10
+        },
+        {
+          "elapsedSec": 17400,
+          "good": 253,
+          "rejected": 10
+        },
+        {
+          "elapsedSec": 17700,
+          "good": 257,
+          "rejected": 10
+        },
+        {
+          "elapsedSec": 18000,
+          "good": 262,
+          "rejected": 10
+        },
+        {
+          "elapsedSec": 18300,
+          "good": 266,
+          "rejected": 11
+        },
+        {
+          "elapsedSec": 18600,
+          "good": 270,
+          "rejected": 11
+        },
+        {
+          "elapsedSec": 18900,
+          "good": 275,
+          "rejected": 11
+        },
+        {
+          "elapsedSec": 19200,
+          "good": 279,
+          "rejected": 11
+        },
+        {
+          "elapsedSec": 19500,
+          "good": 284,
+          "rejected": 11
+        },
+        {
+          "elapsedSec": 19800,
+          "good": 288,
+          "rejected": 12
+        },
+        {
+          "elapsedSec": 20100,
+          "good": 292,
+          "rejected": 12
+        },
+        {
+          "elapsedSec": 20400,
+          "good": 297,
+          "rejected": 12
+        },
+        {
+          "elapsedSec": 20700,
+          "good": 301,
+          "rejected": 12
+        },
+        {
+          "elapsedSec": 21000,
+          "good": 306,
+          "rejected": 12
+        },
+        {
+          "elapsedSec": 21300,
+          "good": 311,
+          "rejected": 12
+        },
+        {
+          "elapsedSec": 21600,
+          "good": 314,
+          "rejected": 13
+        },
+        {
+          "elapsedSec": 21900,
+          "good": 319,
+          "rejected": 13
+        },
+        {
+          "elapsedSec": 22200,
+          "good": 324,
+          "rejected": 13
+        },
+        {
+          "elapsedSec": 22500,
+          "good": 328,
+          "rejected": 13
+        },
+        {
+          "elapsedSec": 22800,
+          "good": 333,
+          "rejected": 13
+        },
+        {
+          "elapsedSec": 23100,
+          "good": 336,
+          "rejected": 14
+        },
+        {
+          "elapsedSec": 23400,
+          "good": 341,
+          "rejected": 14
+        },
+        {
+          "elapsedSec": 23700,
+          "good": 346,
+          "rejected": 14
+        },
+        {
+          "elapsedSec": 24000,
+          "good": 350,
+          "rejected": 14
+        },
+        {
+          "elapsedSec": 24300,
+          "good": 355,
+          "rejected": 14
+        },
+        {
+          "elapsedSec": 24600,
+          "good": 359,
+          "rejected": 14
+        },
+        {
+          "elapsedSec": 24900,
+          "good": 363,
+          "rejected": 15
+        },
+        {
+          "elapsedSec": 25200,
+          "good": 368,
+          "rejected": 15
+        },
+        {
+          "elapsedSec": 25500,
+          "good": 372,
+          "rejected": 15
+        },
+        {
+          "elapsedSec": 25800,
+          "good": 377,
+          "rejected": 15
+        },
+        {
+          "elapsedSec": 26100,
+          "good": 382,
+          "rejected": 15
+        },
+        {
+          "elapsedSec": 26400,
+          "good": 385,
+          "rejected": 16
+        },
+        {
+          "elapsedSec": 26700,
+          "good": 390,
+          "rejected": 16
+        },
+        {
+          "elapsedSec": 27000,
+          "good": 394,
+          "rejected": 16
+        },
+        {
+          "elapsedSec": 27300,
+          "good": 399,
+          "rejected": 16
+        },
+        {
+          "elapsedSec": 27600,
+          "good": 404,
+          "rejected": 16
+        },
+        {
+          "elapsedSec": 27900,
+          "good": 408,
+          "rejected": 16
+        },
+        {
+          "elapsedSec": 28200,
+          "good": 412,
+          "rejected": 17
+        },
+        {
+          "elapsedSec": 28500,
+          "good": 416,
+          "rejected": 17
+        },
+        {
+          "elapsedSec": 28800,
+          "good": 421,
+          "rejected": 17
+        }
+      ]
+    },
+    {
+      "id": "restore_later",
+      "title": "Восстановить через 30 мин",
+      "recoveryAtSec": 5400,
+      "recoveryWithinShift": true,
+      "good": 394,
+      "rejected": 16,
+      "planDelta": -16,
+      "planFulfillmentPct": 96.1,
+      "gainVsBaseline": 355,
+      "additionalDowntimeSec": 1800,
+      "series": [
+        {
+          "elapsedSec": 3600,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 3900,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 4200,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 4500,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 4800,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 5100,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 5400,
+          "good": 39,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 5700,
+          "good": 42,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 6000,
+          "good": 47,
+          "rejected": 1
+        },
+        {
+          "elapsedSec": 6300,
+          "good": 51,
+          "rejected": 2
+        },
+        {
+          "elapsedSec": 6600,
+          "good": 56,
+          "rejected": 2
+        },
+        {
+          "elapsedSec": 6900,
+          "good": 62,
+          "rejected": 2
+        },
+        {
+          "elapsedSec": 7200,
+          "good": 67,
+          "rejected": 2
+        },
+        {
+          "elapsedSec": 7500,
+          "good": 72,
+          "rejected": 2
+        },
+        {
+          "elapsedSec": 7800,
+          "good": 76,
+          "rejected": 3
+        },
+        {
+          "elapsedSec": 8100,
+          "good": 81,
+          "rejected": 3
+        },
+        {
+          "elapsedSec": 8400,
+          "good": 86,
+          "rejected": 3
+        },
+        {
+          "elapsedSec": 8700,
+          "good": 92,
+          "rejected": 3
+        },
+        {
+          "elapsedSec": 9000,
+          "good": 96,
+          "rejected": 4
+        },
+        {
+          "elapsedSec": 9300,
+          "good": 101,
+          "rejected": 4
+        },
+        {
+          "elapsedSec": 9600,
+          "good": 106,
+          "rejected": 4
+        },
+        {
+          "elapsedSec": 9900,
+          "good": 111,
+          "rejected": 4
+        },
+        {
+          "elapsedSec": 10200,
+          "good": 116,
+          "rejected": 4
+        },
+        {
+          "elapsedSec": 10500,
+          "good": 121,
+          "rejected": 5
+        },
+        {
+          "elapsedSec": 10800,
+          "good": 126,
+          "rejected": 5
+        },
+        {
+          "elapsedSec": 11100,
+          "good": 131,
+          "rejected": 5
+        },
+        {
+          "elapsedSec": 11400,
+          "good": 136,
+          "rejected": 5
+        },
+        {
+          "elapsedSec": 11700,
+          "good": 141,
+          "rejected": 5
+        },
+        {
+          "elapsedSec": 12000,
+          "good": 145,
+          "rejected": 6
+        },
+        {
+          "elapsedSec": 12300,
+          "good": 151,
+          "rejected": 6
+        },
+        {
+          "elapsedSec": 12600,
+          "good": 155,
+          "rejected": 6
+        },
+        {
+          "elapsedSec": 12900,
+          "good": 160,
+          "rejected": 6
+        },
+        {
+          "elapsedSec": 13200,
+          "good": 164,
+          "rejected": 6
+        },
+        {
+          "elapsedSec": 13500,
+          "good": 168,
+          "rejected": 7
+        },
+        {
+          "elapsedSec": 13800,
+          "good": 173,
+          "rejected": 7
+        },
+        {
+          "elapsedSec": 14100,
+          "good": 177,
+          "rejected": 7
+        },
+        {
+          "elapsedSec": 14400,
+          "good": 182,
+          "rejected": 7
+        },
+        {
+          "elapsedSec": 14700,
+          "good": 186,
+          "rejected": 7
+        },
+        {
+          "elapsedSec": 15000,
+          "good": 191,
+          "rejected": 7
+        },
+        {
+          "elapsedSec": 15300,
+          "good": 195,
+          "rejected": 8
+        },
+        {
+          "elapsedSec": 15600,
+          "good": 199,
+          "rejected": 8
+        },
+        {
+          "elapsedSec": 15900,
+          "good": 204,
+          "rejected": 8
+        },
+        {
+          "elapsedSec": 16200,
+          "good": 209,
+          "rejected": 8
+        },
+        {
+          "elapsedSec": 16500,
+          "good": 213,
+          "rejected": 8
+        },
+        {
+          "elapsedSec": 16800,
+          "good": 217,
+          "rejected": 9
+        },
+        {
+          "elapsedSec": 17100,
+          "good": 221,
+          "rejected": 9
+        },
+        {
+          "elapsedSec": 17400,
+          "good": 226,
+          "rejected": 9
+        },
+        {
+          "elapsedSec": 17700,
+          "good": 231,
+          "rejected": 9
+        },
+        {
+          "elapsedSec": 18000,
+          "good": 235,
+          "rejected": 9
+        },
+        {
+          "elapsedSec": 18300,
+          "good": 240,
+          "rejected": 9
+        },
+        {
+          "elapsedSec": 18600,
+          "good": 243,
+          "rejected": 10
+        },
+        {
+          "elapsedSec": 18900,
+          "good": 248,
+          "rejected": 10
+        },
+        {
+          "elapsedSec": 19200,
+          "good": 253,
+          "rejected": 10
+        },
+        {
+          "elapsedSec": 19500,
+          "good": 257,
+          "rejected": 10
+        },
+        {
+          "elapsedSec": 19800,
+          "good": 262,
+          "rejected": 10
+        },
+        {
+          "elapsedSec": 20100,
+          "good": 266,
+          "rejected": 11
+        },
+        {
+          "elapsedSec": 20400,
+          "good": 270,
+          "rejected": 11
+        },
+        {
+          "elapsedSec": 20700,
+          "good": 275,
+          "rejected": 11
+        },
+        {
+          "elapsedSec": 21000,
+          "good": 279,
+          "rejected": 11
+        },
+        {
+          "elapsedSec": 21300,
+          "good": 284,
+          "rejected": 11
+        },
+        {
+          "elapsedSec": 21600,
+          "good": 288,
+          "rejected": 12
+        },
+        {
+          "elapsedSec": 21900,
+          "good": 292,
+          "rejected": 12
+        },
+        {
+          "elapsedSec": 22200,
+          "good": 297,
+          "rejected": 12
+        },
+        {
+          "elapsedSec": 22500,
+          "good": 301,
+          "rejected": 12
+        },
+        {
+          "elapsedSec": 22800,
+          "good": 306,
+          "rejected": 12
+        },
+        {
+          "elapsedSec": 23100,
+          "good": 311,
+          "rejected": 12
+        },
+        {
+          "elapsedSec": 23400,
+          "good": 314,
+          "rejected": 13
+        },
+        {
+          "elapsedSec": 23700,
+          "good": 319,
+          "rejected": 13
+        },
+        {
+          "elapsedSec": 24000,
+          "good": 324,
+          "rejected": 13
+        },
+        {
+          "elapsedSec": 24300,
+          "good": 328,
+          "rejected": 13
+        },
+        {
+          "elapsedSec": 24600,
+          "good": 333,
+          "rejected": 13
+        },
+        {
+          "elapsedSec": 24900,
+          "good": 336,
+          "rejected": 14
+        },
+        {
+          "elapsedSec": 25200,
+          "good": 341,
+          "rejected": 14
+        },
+        {
+          "elapsedSec": 25500,
+          "good": 346,
+          "rejected": 14
+        },
+        {
+          "elapsedSec": 25800,
+          "good": 350,
+          "rejected": 14
+        },
+        {
+          "elapsedSec": 26100,
+          "good": 355,
+          "rejected": 14
+        },
+        {
+          "elapsedSec": 26400,
+          "good": 359,
+          "rejected": 14
+        },
+        {
+          "elapsedSec": 26700,
+          "good": 363,
+          "rejected": 15
+        },
+        {
+          "elapsedSec": 27000,
+          "good": 368,
+          "rejected": 15
+        },
+        {
+          "elapsedSec": 27300,
+          "good": 372,
+          "rejected": 15
+        },
+        {
+          "elapsedSec": 27600,
+          "good": 377,
+          "rejected": 15
+        },
+        {
+          "elapsedSec": 27900,
+          "good": 382,
+          "rejected": 15
+        },
+        {
+          "elapsedSec": 28200,
+          "good": 385,
+          "rejected": 16
+        },
+        {
+          "elapsedSec": 28500,
+          "good": 390,
+          "rejected": 16
+        },
+        {
+          "elapsedSec": 28800,
+          "good": 394,
+          "rejected": 16
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "bestScenarioIds": [
+      "restore_now"
+    ],
+    "maxGain": 382,
+    "delayLoss": 27
+  },
+  "assumptions": [
+    "Расчёт на условных демонстрационных данных; это результат модели, а не оценка ИИ.",
+    "Все варианты стартуют из одного состояния линии, включая изделия в работе и очереди.",
+    "Восстановление означает мгновенный возврат выбранного поста к нормативному циклу. Задержка — время до завершения восстановления, а не предсказанная длительность ремонта.",
+    "Режимы остальных постов, интервал подачи и правило брака остаются неизменными до конца смены.",
+    "Дефектным считается каждое 25-е изделие на выходе; отказы и сменные перерывы не моделируются.",
+    "Эффект выражен в годных изделиях. Стоимость ремонта, персонал и денежная выгода не оценивались."
+  ]
+}

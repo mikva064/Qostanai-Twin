@@ -1,0 +1,584 @@
+{
+  "schemaVersion": 2,
+  "methodVersion": "flow-history-v2",
+  "configuration": {
+    "shiftPlan": 275,
+    "arrivalIntervalSec": 80,
+    "stationCyclesSec": [
+      45,
+      60,
+      95,
+      40,
+      65
+    ],
+    "bufferCapacities": [
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  "importId": "c5d110e534f74e9cdaff050cc9ca4ed641aa304713a3deecfe11e2dca0ffa4c5",
+  "createdAt": "2026-10-03T16:45:48.826216+00:00",
+  "fileName": "demo.csv",
+  "source": "synthetic_example",
+  "shiftDurationSec": 28800,
+  "plan": 275,
+  "quality": {
+    "rowCount": 33,
+    "maxGapSec": 900,
+    "warnings": []
+  },
+  "summary": {
+    "good": 390,
+    "rejected": 16,
+    "planDelta": 115,
+    "rejectPct": 3.94,
+    "replayGood": 262,
+    "checkpointCount": 3,
+    "flowMae": 149.33,
+    "rateMae": 21.0
+  },
+  "observations": [
+    {
+      "elapsedSec": 0,
+      "good": 0,
+      "rejected": 0,
+      "modes": [
+        "normal",
+        "normal",
+        "normal",
+        "normal",
+        "normal"
+      ],
+      "csvLine": 2,
+      "replayGood": 0,
+      "replayRejected": 0
+    },
+    {
+      "elapsedSec": 900,
+      "good": 10,
+      "rejected": 0,
+      "modes": [
+        "normal",
+        "normal",
+        "normal",
+        "normal",
+        "normal"
+      ],
+      "csvLine": 3,
+      "replayGood": 7,
+      "replayRejected": 0
+    },
+    {
+      "elapsedSec": 1800,
+      "good": 23,
+      "rejected": 0,
+      "modes": [
+        "normal",
+        "normal",
+        "normal",
+        "normal",
+        "normal"
+      ],
+      "csvLine": 4,
+      "replayGood": 16,
+      "replayRejected": 0
+    },
+    {
+      "elapsedSec": 2700,
+      "good": 35,
+      "rejected": 1,
+      "modes": [
+        "normal",
+        "normal",
+        "normal",
+        "normal",
+        "normal"
+      ],
+      "csvLine": 5,
+      "replayGood": 25,
+      "replayRejected": 1
+    },
+    {
+      "elapsedSec": 3600,
+      "good": 48,
+      "rejected": 2,
+      "modes": [
+        "normal",
+        "normal",
+        "normal",
+        "normal",
+        "normal"
+      ],
+      "csvLine": 6,
+      "replayGood": 34,
+      "replayRejected": 1
+    },
+    {
+      "elapsedSec": 4500,
+      "good": 61,
+      "rejected": 2,
+      "modes": [
+        "normal",
+        "normal",
+        "normal",
+        "normal",
+        "normal"
+      ],
+      "csvLine": 7,
+      "replayGood": 44,
+      "replayRejected": 1
+    },
+    {
+      "elapsedSec": 5400,
+      "good": 73,
+      "rejected": 3,
+      "modes": [
+        "normal",
+        "normal",
+        "normal",
+        "normal",
+        "normal"
+      ],
+      "csvLine": 8,
+      "replayGood": 52,
+      "replayRejected": 2
+    },
+    {
+      "elapsedSec": 6300,
+      "good": 86,
+      "rejected": 3,
+      "modes": [
+        "normal",
+        "normal",
+        "normal",
+        "normal",
+        "normal"
+      ],
+      "csvLine": 9,
+      "replayGood": 62,
+      "replayRejected": 2
+    },
+    {
+      "elapsedSec": 7200,
+      "good": 99,
+      "rejected": 4,
+      "modes": [
+        "normal",
+        "normal",
+        "stop",
+        "normal",
+        "normal"
+      ],
+      "csvLine": 10,
+      "replayGood": 71,
+      "replayRejected": 2
+    },
+    {
+      "elapsedSec": 8100,
+      "good": 100,
+      "rejected": 4,
+      "modes": [
+        "normal",
+        "normal",
+        "stop",
+        "normal",
+        "normal"
+      ],
+      "csvLine": 11,
+      "replayGood": 72,
+      "replayRejected": 2
+    },
+    {
+      "elapsedSec": 9000,
+      "good": 100,
+      "rejected": 4,
+      "modes": [
+        "normal",
+        "normal",
+        "normal",
+        "normal",
+        "normal"
+      ],
+      "csvLine": 12,
+      "replayGood": 72,
+      "replayRejected": 2
+    },
+    {
+      "elapsedSec": 9900,
+      "good": 114,
+      "rejected": 4,
+      "modes": [
+        "normal",
+        "normal",
+        "normal",
+        "normal",
+        "normal"
+      ],
+      "csvLine": 13,
+      "replayGood": 80,
+      "replayRejected": 3
+    },
+    {
+      "elapsedSec": 10800,
+      "good": 128,
+      "rejected": 5,
+      "modes": [
+        "normal",
+        "normal",
+        "normal",
+        "normal",
+        "normal"
+      ],
+      "csvLine": 14,
+      "replayGood": 89,
+      "replayRejected": 3
+    },
+    {
+      "elapsedSec": 11700,
+      "good": 144,
+      "rejected": 5,
+      "modes": [
+        "normal",
+        "normal",
+        "normal",
+        "normal",
+        "normal"
+      ],
+      "csvLine": 15,
+      "replayGood": 97,
+      "replayRejected": 4
+    },
+    {
+      "elapsedSec": 12600,
+      "good": 158,
+      "rejected": 6,
+      "modes": [
+        "normal",
+        "normal",
+        "normal",
+        "normal",
+        "normal"
+      ],
+      "csvLine": 16,
+      "replayGood": 107,
+      "replayRejected": 4
+    },
+    {
+      "elapsedSec": 13500,
+      "good": 173,
+      "rejected": 7,
+      "modes": [
+        "normal",
+        "normal",
+        "normal",
+        "normal",
+        "normal"
+      ],
+      "csvLine": 17,
+      "replayGood": 116,
+      "replayRejected": 4
+    },
+    {
+      "elapsedSec": 14400,
+      "good": 188,
+      "rejected": 7,
+      "modes": [
+        "normal",
+        "normal",
+        "slow",
+        "normal",
+        "normal"
+      ],
+      "csvLine": 18,
+      "replayGood": 125,
+      "replayRejected": 5
+    },
+    {
+      "elapsedSec": 15300,
+      "good": 195,
+      "rejected": 8,
+      "modes": [
+        "normal",
+        "normal",
+        "slow",
+        "normal",
+        "normal"
+      ],
+      "csvLine": 19,
+      "replayGood": 130,
+      "replayRejected": 5
+    },
+    {
+      "elapsedSec": 16200,
+      "good": 203,
+      "rejected": 8,
+      "modes": [
+        "normal",
+        "normal",
+        "normal",
+        "normal",
+        "normal"
+      ],
+      "csvLine": 20,
+      "replayGood": 135,
+      "replayRejected": 5
+    },
+    {
+      "elapsedSec": 17100,
+      "good": 216,
+      "rejected": 9,
+      "modes": [
+        "normal",
+        "normal",
+        "normal",
+        "normal",
+        "normal"
+      ],
+      "csvLine": 21,
+      "replayGood": 144,
+      "replayRejected": 5
+    },
+    {
+      "elapsedSec": 18000,
+      "good": 232,
+      "rejected": 9,
+      "modes": [
+        "normal",
+        "normal",
+        "normal",
+        "normal",
+        "normal"
+      ],
+      "csvLine": 22,
+      "replayGood": 152,
+      "replayRejected": 6
+    },
+    {
+      "elapsedSec": 18900,
+      "good": 246,
+      "rejected": 10,
+      "modes": [
+        "normal",
+        "normal",
+        "normal",
+        "normal",
+        "normal"
+      ],
+      "csvLine": 23,
+      "replayGood": 162,
+      "replayRejected": 6
+    },
+    {
+      "elapsedSec": 19800,
+      "good": 262,
+      "rejected": 10,
+      "modes": [
+        "normal",
+        "normal",
+        "normal",
+        "normal",
+        "normal"
+      ],
+      "csvLine": 24,
+      "replayGood": 170,
+      "replayRejected": 7
+    },
+    {
+      "elapsedSec": 20700,
+      "good": 276,
+      "rejected": 11,
+      "modes": [
+        "normal",
+        "normal",
+        "normal",
+        "normal",
+        "normal"
+      ],
+      "csvLine": 25,
+      "replayGood": 180,
+      "replayRejected": 7
+    },
+    {
+      "elapsedSec": 21600,
+      "good": 288,
+      "rejected": 12,
+      "modes": [
+        "normal",
+        "normal",
+        "normal",
+        "slow",
+        "normal"
+      ],
+      "csvLine": 26,
+      "replayGood": 189,
+      "replayRejected": 7
+    },
+    {
+      "elapsedSec": 22500,
+      "good": 298,
+      "rejected": 12,
+      "modes": [
+        "normal",
+        "normal",
+        "normal",
+        "normal",
+        "normal"
+      ],
+      "csvLine": 27,
+      "replayGood": 197,
+      "replayRejected": 8
+    },
+    {
+      "elapsedSec": 23400,
+      "good": 313,
+      "rejected": 13,
+      "modes": [
+        "normal",
+        "normal",
+        "normal",
+        "normal",
+        "normal"
+      ],
+      "csvLine": 28,
+      "replayGood": 207,
+      "replayRejected": 8
+    },
+    {
+      "elapsedSec": 24300,
+      "good": 327,
+      "rejected": 13,
+      "modes": [
+        "normal",
+        "normal",
+        "normal",
+        "normal",
+        "normal"
+      ],
+      "csvLine": 29,
+      "replayGood": 216,
+      "replayRejected": 9
+    },
+    {
+      "elapsedSec": 25200,
+      "good": 339,
+      "rejected": 14,
+      "modes": [
+        "normal",
+        "normal",
+        "normal",
+        "normal",
+        "normal"
+      ],
+      "csvLine": 30,
+      "replayGood": 225,
+      "replayRejected": 9
+    },
+    {
+      "elapsedSec": 26100,
+      "good": 353,
+      "rejected": 14,
+      "modes": [
+        "normal",
+        "normal",
+        "normal",
+        "normal",
+        "normal"
+      ],
+      "csvLine": 31,
+      "replayGood": 235,
+      "replayRejected": 9
+    },
+    {
+      "elapsedSec": 27000,
+      "good": 365,
+      "rejected": 15,
+      "modes": [
+        "normal",
+        "normal",
+        "normal",
+        "normal",
+        "normal"
+      ],
+      "csvLine": 32,
+      "replayGood": 243,
+      "replayRejected": 10
+    },
+    {
+      "elapsedSec": 27900,
+      "good": 378,
+      "rejected": 15,
+      "modes": [
+        "normal",
+        "normal",
+        "normal",
+        "normal",
+        "normal"
+      ],
+      "csvLine": 33,
+      "replayGood": 253,
+      "replayRejected": 10
+    },
+    {
+      "elapsedSec": 28800,
+      "good": 390,
+      "rejected": 16,
+      "modes": [
+        "normal",
+        "normal",
+        "normal",
+        "normal",
+        "normal"
+      ],
+      "csvLine": 34,
+      "replayGood": 262,
+      "replayRejected": 10
+    }
+  ],
+  "checkpoints": [
+    {
+      "elapsedSec": 7200,
+      "observedGood": 99,
+      "replayGood": 71,
+      "flowForecast": 100,
+      "rateForecast": 405,
+      "rateWindowSec": 3600,
+      "actualGood": 390,
+      "flowError": -290,
+      "rateError": 15
+    },
+    {
+      "elapsedSec": 14400,
+      "observedGood": 188,
+      "replayGood": 125,
+      "flowForecast": 261,
+      "rateForecast": 428,
+      "rateWindowSec": 3600,
+      "actualGood": 390,
+      "flowError": -129,
+      "rateError": 38
+    },
+    {
+      "elapsedSec": 21600,
+      "observedGood": 288,
+      "replayGood": 189,
+      "flowForecast": 361,
+      "rateForecast": 400,
+      "rateWindowSec": 3600,
+      "actualGood": 390,
+      "flowError": -29,
+      "rateError": 10
+    }
+  ],
+  "assumptions": [
+    "Учебный пример синтетический. Для пользовательского CSV происхождение и достоверность данных не подтверждаются автоматически.",
+    "Одна последовательная линия из пяти постов, смена 8 часов, старт без изделий в работе; счётчики обнуляются в начале смены.",
+    "Режим из строки действует с её времени до следующей записи. Все изменения режима должны быть включены в файл отдельными строками.",
+    "Модель: циклы 45/60/95/40/65 с, подача 80 с, буферы 2/3/4/5 мест; каждое 25-е изделие бракуется. Параметры сохранены в отчёте и автоматически не подгоняются под файл.",
+    "Прогноз модели = наблюдаемый годный выпуск на срезе + расчёт оставшегося выпуска. Очереди восстановлены моделью по прошлым режимам и могут отличаться от фактических.",
+    "Для прогноза на срезе режимы сохраняются до конца смены. Будущие строки не используются. Известные после смены ремонты не подставляются в прошлый прогноз.",
+    "Базовый прогноз продолжает средний темп за последний час; при редких записях берётся ближайшая более ранняя точка, окно указано в таблице.",
+    "MAE — средняя абсолютная ошибка в изделиях по доступным срезам около 2/4/6 часов. Это проверка одной смены, не доказательство точности на заводе."
+  ]
+}

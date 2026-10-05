@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 1,
+  "provenance": {
+    "kind": "provided-test-data",
+    "fileName": "Кейс_Цифровой_двойник_Тестовые_данные.docx",
+    "sha256": "1c46c836dd2907a5c6c9e505c4c751155c6c7fc639ceb191882295a5e2e81e76",
+    "title": "Тестовые данные для кейса «Цифровой двойник завода»",
+    "productionPeriod": "unspecified",
+    "monthlyPlanPeriod": "unspecified"
+  },
+  "production": [
+    {
+      "date": "2026-10-01",
+      "section": "welding",
+      "line": "Сварка-1",
+      "plan": 120,
+      "actual": 118,
+      "operatingHours": 7.8,
+      "utilizationPct": 98.0
+    },
+    {
+      "date": "2026-10-01",
+      "section": "painting",
+      "line": "Окраска-1",
+      "plan": 120,
+      "actual": 115,
+      "operatingHours": 7.5,
+      "utilizationPct": 94.0
+    },
+    {
+      "date": "2026-10-01",
+      "section": "assembly",
+      "line": "Сборка-1",
+      "plan": 120,
+      "actual": 121,
+      "operatingHours": 8.0,
+      "utilizationPct": 100.0
+    },
+    {
+      "date": "2026-10-02",
+      "section": "welding",
+      "line": "Сварка-1",
+      "plan": 120,
+      "actual": 111,
+      "operatingHours": 7.2,
+      "utilizationPct": 91.0
+    },
+    {
+      "date": "2026-10-02",
+      "section": "painting",
+      "line": "Окраска-1",
+      "plan": 120,
+      "actual": 116,
+      "operatingHours": 7.7,
+      "utilizationPct": 96.0
+    },
+    {
+      "date": "2026-10-02",
+      "section": "assembly",
+      "line": "Сборка-1",
+      "plan": 120,
+      "actual": 119,
+      "operatingHours": 7.9,
+      "utilizationPct": 99.0
+    }
+  ],
+  "downtime": [
+    {
+      "date": "2026-10-01",
+      "section": "welding",
+      "equipment": "ABB-01",
+      "reason": "Ошибка датчика",
+      "minutes": 25,
+      "critical": null
+    },
+    {
+      "date": "2026-10-01",
+      "section": "painting",
+      "equipment": "Камера-02",
+      "reason": "Замена фильтра",
+      "minutes": 40,
+      "critical": null
+    },
+    {
+      "date": "2026-10-02",
+      "section": "assembly",
+      "equipment": "Конвейер-03",
+      "reason": "Обрыв цепи",
+      "minutes": 55,
+      "critical": null
+    },
+    {
+      "date": "2026-10-02",
+      "section": "welding",
+      "equipment": "ABB-04",
+      "reason": "Плановое ТО",
+      "minutes": 30,
+      "critical": null
+    }
+  ],
+  "monthlyPlans": [
+    {
+      "model": "Chevrolet Onix",
+      "plan": 2500
+    },
+    {
+      "model": "Chevrolet Cobalt",
+      "plan": 1800
+    },
+    {
+      "model": "JAC J7",
+      "plan": 500
+    }
+  ],
+  "quality": [
+    {
+      "date": "2026-10-01",
+      "section": "welding",
+      "produced": 118,
+      "rejected": 2,
+      "reportedDefectPct": 1.7
+    },
+    {
+      "date": "2026-10-01",
+      "section": "painting",
+      "produced": 115,
+      "rejected": 4,
+      "reportedDefectPct": 3.5
+    },
+    {
+      "date": "2026-10-01",
+      "section": "assembly",
+      "produced": 121,
+      "rejected": 1,
+      "reportedDefectPct": 0.8
+    },
+    {
+      "date": "2026-10-02",
+      "section": "welding",
+      "produced": 111,
+      "rejected": 3,
+      "reportedDefectPct": 2.7
+    },
+    {
+      "date": "2026-10-02",
+      "section": "painting",
+      "produced": 116,
+      "rejected": 6,
+      "reportedDefectPct": 5.2
+    },
+    {
+      "date": "2026-10-02",
+      "section": "assembly",
+      "produced": 119,
+      "rejected": 2,
+      "reportedDefectPct": 1.7
+    }
+  ],
+  "topology": [
+    "Склад комплектующих",
+    "Сварка",
+    "Окраска",
+    "Сборка",
+    "Контроль качества",
+    "Склад готовой продукции"
+  ],
+  "rules": {
+    "schedule": {
+      "shiftsPerDay": 2,
+      "hoursPerShift": 8
+    },
+    "oeeTargetPct": 85,
+    "maxDefectPct": 2,
+    "criticalDowntimeMinutesPerDay": 60,
+    "monthlyTarget": 5500
+  }
+}

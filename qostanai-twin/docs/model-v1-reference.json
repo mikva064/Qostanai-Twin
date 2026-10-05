@@ -1,0 +1,244 @@
+{
+  "schemaVersion": 1,
+  "source": "simulation",
+  "receivedAt": "2026-10-02T03:45:00.000Z",
+  "state": {
+    "schemaVersion": 1,
+    "source": "simulation",
+    "elapsedSec": 2700,
+    "shiftDurationSec": 28800,
+    "shiftPlan": 410,
+    "arrivalIntervalSec": 65,
+    "nextArrivalSec": 2731,
+    "released": 42,
+    "good": 37,
+    "rejected": 1,
+    "eventSequence": 1,
+    "stations": [
+      {
+        "id": "P01",
+        "name": "Подача",
+        "operation": "Подача комплектующих",
+        "nominalCycleSec": 48,
+        "mode": "normal",
+        "remainingWorkSec": 14,
+        "completed": 41,
+        "busySec": 2002,
+        "downtimeSec": 0
+      },
+      {
+        "id": "P02",
+        "name": "Сборка",
+        "operation": "Основная сборочная операция",
+        "nominalCycleSec": 52,
+        "mode": "normal",
+        "remainingWorkSec": 1,
+        "completed": 40,
+        "busySec": 2131,
+        "downtimeSec": 0
+      },
+      {
+        "id": "P03",
+        "name": "Установка",
+        "operation": "Установка узла",
+        "nominalCycleSec": 58,
+        "mode": "normal",
+        "remainingWorkSec": null,
+        "completed": 40,
+        "busySec": 2320,
+        "downtimeSec": 0
+      },
+      {
+        "id": "P04",
+        "name": "Проверка",
+        "operation": "Проверка комплектности",
+        "nominalCycleSec": 50,
+        "mode": "normal",
+        "remainingWorkSec": 44,
+        "completed": 39,
+        "busySec": 1956,
+        "downtimeSec": 0
+      },
+      {
+        "id": "P05",
+        "name": "Выход",
+        "operation": "Приёмка готового изделия",
+        "nominalCycleSec": 55,
+        "mode": "normal",
+        "remainingWorkSec": 34,
+        "completed": 38,
+        "busySec": 2111,
+        "downtimeSec": 0
+      }
+    ],
+    "buffers": [
+      {
+        "id": "B01",
+        "from": "P01",
+        "to": "P02",
+        "count": 0,
+        "capacity": 6
+      },
+      {
+        "id": "B02",
+        "from": "P02",
+        "to": "P03",
+        "count": 0,
+        "capacity": 6
+      },
+      {
+        "id": "B03",
+        "from": "P03",
+        "to": "P04",
+        "count": 0,
+        "capacity": 6
+      },
+      {
+        "id": "B04",
+        "from": "P04",
+        "to": "P05",
+        "count": 0,
+        "capacity": 6
+      }
+    ],
+    "incidents": [
+      {
+        "id": "event-1",
+        "stationId": null,
+        "title": "Смена запущена",
+        "detail": "Демонстрационная линия · подача каждые 65 секунд",
+        "severity": "info",
+        "startedAtSec": 0,
+        "resolvedAtSec": 0,
+        "acknowledged": false
+      }
+    ],
+    "history": [
+      {
+        "elapsedSec": 0,
+        "good": 0,
+        "rejected": 0
+      },
+      {
+        "elapsedSec": 120,
+        "good": 0,
+        "rejected": 0
+      },
+      {
+        "elapsedSec": 240,
+        "good": 0,
+        "rejected": 0
+      },
+      {
+        "elapsedSec": 360,
+        "good": 2,
+        "rejected": 0
+      },
+      {
+        "elapsedSec": 480,
+        "good": 4,
+        "rejected": 0
+      },
+      {
+        "elapsedSec": 600,
+        "good": 6,
+        "rejected": 0
+      },
+      {
+        "elapsedSec": 720,
+        "good": 8,
+        "rejected": 0
+      },
+      {
+        "elapsedSec": 840,
+        "good": 9,
+        "rejected": 0
+      },
+      {
+        "elapsedSec": 960,
+        "good": 11,
+        "rejected": 0
+      },
+      {
+        "elapsedSec": 1080,
+        "good": 13,
+        "rejected": 0
+      },
+      {
+        "elapsedSec": 1200,
+        "good": 15,
+        "rejected": 0
+      },
+      {
+        "elapsedSec": 1320,
+        "good": 17,
+        "rejected": 0
+      },
+      {
+        "elapsedSec": 1440,
+        "good": 19,
+        "rejected": 0
+      },
+      {
+        "elapsedSec": 1560,
+        "good": 20,
+        "rejected": 0
+      },
+      {
+        "elapsedSec": 1680,
+        "good": 22,
+        "rejected": 0
+      },
+      {
+        "elapsedSec": 1800,
+        "good": 24,
+        "rejected": 0
+      },
+      {
+        "elapsedSec": 1920,
+        "good": 25,
+        "rejected": 1
+      },
+      {
+        "elapsedSec": 2040,
+        "good": 27,
+        "rejected": 1
+      },
+      {
+        "elapsedSec": 2160,
+        "good": 29,
+        "rejected": 1
+      },
+      {
+        "elapsedSec": 2280,
+        "good": 31,
+        "rejected": 1
+      },
+      {
+        "elapsedSec": 2400,
+        "good": 32,
+        "rejected": 1
+      },
+      {
+        "elapsedSec": 2520,
+        "good": 34,
+        "rejected": 1
+      },
+      {
+        "elapsedSec": 2640,
+        "good": 36,
+        "rejected": 1
+      }
+    ]
+  },
+  "forecast": {
+    "goodAtShiftEnd": 423,
+    "planDelta": 13,
+    "bottleneckId": null,
+    "fillBufferId": null,
+    "minutesToFill": null,
+    "explanation": "При текущем режиме линия обеспечивает план. Ограничение потока — интервал подачи 65 с.",
+    "calculatedAtSec": 2700,
+    "assumption": "Расчёт модели при сохранении текущих режимов до 16:00. Время заполнения буфера — оценка по средним скоростям."
+  }
+}

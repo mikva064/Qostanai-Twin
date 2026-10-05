@@ -1,0 +1,1505 @@
+{
+  "schemaVersion": 1,
+  "kind": "history_report_comparison",
+  "reports": {
+    "a": {
+      "assumptions": [
+        "Учебный пример синтетический. Для пользовательского CSV происхождение и достоверность данных не подтверждаются автоматически.",
+        "Одна последовательная линия из пяти постов, смена 8 часов, старт без изделий в работе; счётчики обнуляются в начале смены.",
+        "Режим из строки действует с её времени до следующей записи. Все изменения режима должны быть включены в файл отдельными строками.",
+        "Модель: циклы 48/52/58/50/55 с, подача 65 с, буферы по 6 мест; каждое 25-е изделие бракуется. Параметры не подгоняются под файл.",
+        "Прогноз модели = наблюдаемый годный выпуск на срезе + расчёт оставшегося выпуска. Очереди восстановлены моделью по прошлым режимам и могут отличаться от фактических.",
+        "Для прогноза на срезе режимы сохраняются до конца смены. Будущие строки не используются. Известные после смены ремонты не подставляются в прошлый прогноз.",
+        "Базовый прогноз продолжает средний темп за последний час; при редких записях берётся ближайшая более ранняя точка, окно указано в таблице.",
+        "MAE — средняя абсолютная ошибка в изделиях по доступным срезам около 2/4/6 часов. Это проверка одной смены, не доказательство точности на заводе."
+      ],
+      "checkpoints": [
+        {
+          "actualGood": 390,
+          "elapsedSec": 7200,
+          "flowError": -289,
+          "flowForecast": 101,
+          "observedGood": 99,
+          "rateError": 15,
+          "rateForecast": 405,
+          "rateWindowSec": 3600,
+          "replayGood": 103
+        },
+        {
+          "actualGood": 390,
+          "elapsedSec": 14400,
+          "flowError": -82,
+          "flowForecast": 308,
+          "observedGood": 188,
+          "rateError": 38,
+          "rateForecast": 428,
+          "rateWindowSec": 3600,
+          "replayGood": 192
+        },
+        {
+          "actualGood": 390,
+          "elapsedSec": 21600,
+          "flowError": -33,
+          "flowForecast": 357,
+          "observedGood": 288,
+          "rateError": 10,
+          "rateForecast": 400,
+          "rateWindowSec": 3600,
+          "replayGood": 297
+        }
+      ],
+      "createdAt": "2026-10-03T13:07:06.855871+00:00",
+      "fileName": "demo-shift.csv",
+      "importId": "d5d5e832aa3abba4a24e01ba381ab3598340d48537c8e8c8c9b09c87db0c9e7d",
+      "methodVersion": "flow-history-v1",
+      "observations": [
+        {
+          "csvLine": 2,
+          "elapsedSec": 0,
+          "good": 0,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 0,
+          "replayGood": 0,
+          "replayRejected": 0
+        },
+        {
+          "csvLine": 3,
+          "elapsedSec": 900,
+          "good": 10,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 0,
+          "replayGood": 10,
+          "replayRejected": 0
+        },
+        {
+          "csvLine": 4,
+          "elapsedSec": 1800,
+          "good": 23,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 0,
+          "replayGood": 24,
+          "replayRejected": 0
+        },
+        {
+          "csvLine": 5,
+          "elapsedSec": 2700,
+          "good": 35,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 1,
+          "replayGood": 37,
+          "replayRejected": 1
+        },
+        {
+          "csvLine": 6,
+          "elapsedSec": 3600,
+          "good": 48,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 2,
+          "replayGood": 50,
+          "replayRejected": 2
+        },
+        {
+          "csvLine": 7,
+          "elapsedSec": 4500,
+          "good": 61,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 2,
+          "replayGood": 64,
+          "replayRejected": 2
+        },
+        {
+          "csvLine": 8,
+          "elapsedSec": 5400,
+          "good": 73,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 3,
+          "replayGood": 77,
+          "replayRejected": 3
+        },
+        {
+          "csvLine": 9,
+          "elapsedSec": 6300,
+          "good": 86,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 3,
+          "replayGood": 90,
+          "replayRejected": 3
+        },
+        {
+          "csvLine": 10,
+          "elapsedSec": 7200,
+          "good": 99,
+          "modes": [
+            "normal",
+            "normal",
+            "stop",
+            "normal",
+            "normal"
+          ],
+          "rejected": 4,
+          "replayGood": 103,
+          "replayRejected": 4
+        },
+        {
+          "csvLine": 11,
+          "elapsedSec": 8100,
+          "good": 100,
+          "modes": [
+            "normal",
+            "normal",
+            "stop",
+            "normal",
+            "normal"
+          ],
+          "rejected": 4,
+          "replayGood": 105,
+          "replayRejected": 4
+        },
+        {
+          "csvLine": 12,
+          "elapsedSec": 9000,
+          "good": 100,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 4,
+          "replayGood": 105,
+          "replayRejected": 4
+        },
+        {
+          "csvLine": 13,
+          "elapsedSec": 9900,
+          "good": 114,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 4,
+          "replayGood": 118,
+          "replayRejected": 4
+        },
+        {
+          "csvLine": 14,
+          "elapsedSec": 10800,
+          "good": 128,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 5,
+          "replayGood": 133,
+          "replayRejected": 5
+        },
+        {
+          "csvLine": 15,
+          "elapsedSec": 11700,
+          "good": 144,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 5,
+          "replayGood": 147,
+          "replayRejected": 6
+        },
+        {
+          "csvLine": 16,
+          "elapsedSec": 12600,
+          "good": 158,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 6,
+          "replayGood": 163,
+          "replayRejected": 6
+        },
+        {
+          "csvLine": 17,
+          "elapsedSec": 13500,
+          "good": 173,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 7,
+          "replayGood": 178,
+          "replayRejected": 7
+        },
+        {
+          "csvLine": 18,
+          "elapsedSec": 14400,
+          "good": 188,
+          "modes": [
+            "normal",
+            "normal",
+            "slow",
+            "normal",
+            "normal"
+          ],
+          "rejected": 7,
+          "replayGood": 192,
+          "replayRejected": 8
+        },
+        {
+          "csvLine": 19,
+          "elapsedSec": 15300,
+          "good": 195,
+          "modes": [
+            "normal",
+            "normal",
+            "slow",
+            "normal",
+            "normal"
+          ],
+          "rejected": 8,
+          "replayGood": 201,
+          "replayRejected": 8
+        },
+        {
+          "csvLine": 20,
+          "elapsedSec": 16200,
+          "good": 203,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 8,
+          "replayGood": 208,
+          "replayRejected": 8
+        },
+        {
+          "csvLine": 21,
+          "elapsedSec": 17100,
+          "good": 216,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 9,
+          "replayGood": 222,
+          "replayRejected": 9
+        },
+        {
+          "csvLine": 22,
+          "elapsedSec": 18000,
+          "good": 232,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 9,
+          "replayGood": 238,
+          "replayRejected": 9
+        },
+        {
+          "csvLine": 23,
+          "elapsedSec": 18900,
+          "good": 246,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 10,
+          "replayGood": 252,
+          "replayRejected": 10
+        },
+        {
+          "csvLine": 24,
+          "elapsedSec": 19800,
+          "good": 262,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 10,
+          "replayGood": 267,
+          "replayRejected": 11
+        },
+        {
+          "csvLine": 25,
+          "elapsedSec": 20700,
+          "good": 276,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 11,
+          "replayGood": 282,
+          "replayRejected": 11
+        },
+        {
+          "csvLine": 26,
+          "elapsedSec": 21600,
+          "good": 288,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "slow",
+            "normal"
+          ],
+          "rejected": 12,
+          "replayGood": 297,
+          "replayRejected": 12
+        },
+        {
+          "csvLine": 27,
+          "elapsedSec": 22500,
+          "good": 298,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 12,
+          "replayGood": 306,
+          "replayRejected": 12
+        },
+        {
+          "csvLine": 28,
+          "elapsedSec": 23400,
+          "good": 313,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 13,
+          "replayGood": 321,
+          "replayRejected": 13
+        },
+        {
+          "csvLine": 29,
+          "elapsedSec": 24300,
+          "good": 327,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 13,
+          "replayGood": 336,
+          "replayRejected": 14
+        },
+        {
+          "csvLine": 30,
+          "elapsedSec": 25200,
+          "good": 339,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 14,
+          "replayGood": 353,
+          "replayRejected": 14
+        },
+        {
+          "csvLine": 31,
+          "elapsedSec": 26100,
+          "good": 353,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 14,
+          "replayGood": 366,
+          "replayRejected": 15
+        },
+        {
+          "csvLine": 32,
+          "elapsedSec": 27000,
+          "good": 365,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 15,
+          "replayGood": 379,
+          "replayRejected": 15
+        },
+        {
+          "csvLine": 33,
+          "elapsedSec": 27900,
+          "good": 378,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 15,
+          "replayGood": 392,
+          "replayRejected": 16
+        },
+        {
+          "csvLine": 34,
+          "elapsedSec": 28800,
+          "good": 390,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 16,
+          "replayGood": 406,
+          "replayRejected": 16
+        }
+      ],
+      "plan": 410,
+      "quality": {
+        "maxGapSec": 900,
+        "rowCount": 33,
+        "warnings": []
+      },
+      "schemaVersion": 1,
+      "shiftDurationSec": 28800,
+      "source": "synthetic_example",
+      "summary": {
+        "checkpointCount": 3,
+        "flowMae": 134.67,
+        "good": 390,
+        "planDelta": -20,
+        "rateMae": 21,
+        "rejectPct": 3.94,
+        "rejected": 16,
+        "replayGood": 406
+      }
+    },
+    "b": {
+      "assumptions": [
+        "Учебный пример синтетический. Для пользовательского CSV происхождение и достоверность данных не подтверждаются автоматически.",
+        "Одна последовательная линия из пяти постов, смена 8 часов, старт без изделий в работе; счётчики обнуляются в начале смены.",
+        "Режим из строки действует с её времени до следующей записи. Все изменения режима должны быть включены в файл отдельными строками.",
+        "Модель: циклы 48/52/58/50/55 с, подача 65 с, буферы по 6 мест; каждое 25-е изделие бракуется. Параметры не подгоняются под файл.",
+        "Прогноз модели = наблюдаемый годный выпуск на срезе + расчёт оставшегося выпуска. Очереди восстановлены моделью по прошлым режимам и могут отличаться от фактических.",
+        "Для прогноза на срезе режимы сохраняются до конца смены. Будущие строки не используются. Известные после смены ремонты не подставляются в прошлый прогноз.",
+        "Базовый прогноз продолжает средний темп за последний час; при редких записях берётся ближайшая более ранняя точка, окно указано в таблице.",
+        "MAE — средняя абсолютная ошибка в изделиях по доступным срезам около 2/4/6 часов. Это проверка одной смены, не доказательство точности на заводе."
+      ],
+      "checkpoints": [
+        {
+          "actualGood": 390,
+          "elapsedSec": 7200,
+          "flowError": -289,
+          "flowForecast": 101,
+          "observedGood": 99,
+          "rateError": 15,
+          "rateForecast": 405,
+          "rateWindowSec": 3600,
+          "replayGood": 103
+        },
+        {
+          "actualGood": 390,
+          "elapsedSec": 14400,
+          "flowError": -82,
+          "flowForecast": 308,
+          "observedGood": 188,
+          "rateError": 38,
+          "rateForecast": 428,
+          "rateWindowSec": 3600,
+          "replayGood": 192
+        },
+        {
+          "actualGood": 390,
+          "elapsedSec": 21600,
+          "flowError": -33,
+          "flowForecast": 357,
+          "observedGood": 288,
+          "rateError": 10,
+          "rateForecast": 400,
+          "rateWindowSec": 3600,
+          "replayGood": 297
+        }
+      ],
+      "createdAt": "2026-10-03T17:15:44.596450+00:00",
+      "fileName": "demo-shift-plan-500.csv",
+      "importId": "3ce36f5aa453f2e8d306c9a6ad6ba68574701f5522bb54a9ee20721b2397229e",
+      "methodVersion": "flow-history-v1",
+      "observations": [
+        {
+          "csvLine": 2,
+          "elapsedSec": 0,
+          "good": 0,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 0,
+          "replayGood": 0,
+          "replayRejected": 0
+        },
+        {
+          "csvLine": 3,
+          "elapsedSec": 900,
+          "good": 10,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 0,
+          "replayGood": 10,
+          "replayRejected": 0
+        },
+        {
+          "csvLine": 4,
+          "elapsedSec": 1800,
+          "good": 23,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 0,
+          "replayGood": 24,
+          "replayRejected": 0
+        },
+        {
+          "csvLine": 5,
+          "elapsedSec": 2700,
+          "good": 35,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 1,
+          "replayGood": 37,
+          "replayRejected": 1
+        },
+        {
+          "csvLine": 6,
+          "elapsedSec": 3600,
+          "good": 48,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 2,
+          "replayGood": 50,
+          "replayRejected": 2
+        },
+        {
+          "csvLine": 7,
+          "elapsedSec": 4500,
+          "good": 61,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 2,
+          "replayGood": 64,
+          "replayRejected": 2
+        },
+        {
+          "csvLine": 8,
+          "elapsedSec": 5400,
+          "good": 73,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 3,
+          "replayGood": 77,
+          "replayRejected": 3
+        },
+        {
+          "csvLine": 9,
+          "elapsedSec": 6300,
+          "good": 86,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 3,
+          "replayGood": 90,
+          "replayRejected": 3
+        },
+        {
+          "csvLine": 10,
+          "elapsedSec": 7200,
+          "good": 99,
+          "modes": [
+            "normal",
+            "normal",
+            "stop",
+            "normal",
+            "normal"
+          ],
+          "rejected": 4,
+          "replayGood": 103,
+          "replayRejected": 4
+        },
+        {
+          "csvLine": 11,
+          "elapsedSec": 8100,
+          "good": 100,
+          "modes": [
+            "normal",
+            "normal",
+            "stop",
+            "normal",
+            "normal"
+          ],
+          "rejected": 4,
+          "replayGood": 105,
+          "replayRejected": 4
+        },
+        {
+          "csvLine": 12,
+          "elapsedSec": 9000,
+          "good": 100,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 4,
+          "replayGood": 105,
+          "replayRejected": 4
+        },
+        {
+          "csvLine": 13,
+          "elapsedSec": 9900,
+          "good": 114,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 4,
+          "replayGood": 118,
+          "replayRejected": 4
+        },
+        {
+          "csvLine": 14,
+          "elapsedSec": 10800,
+          "good": 128,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 5,
+          "replayGood": 133,
+          "replayRejected": 5
+        },
+        {
+          "csvLine": 15,
+          "elapsedSec": 11700,
+          "good": 144,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 5,
+          "replayGood": 147,
+          "replayRejected": 6
+        },
+        {
+          "csvLine": 16,
+          "elapsedSec": 12600,
+          "good": 158,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 6,
+          "replayGood": 163,
+          "replayRejected": 6
+        },
+        {
+          "csvLine": 17,
+          "elapsedSec": 13500,
+          "good": 173,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 7,
+          "replayGood": 178,
+          "replayRejected": 7
+        },
+        {
+          "csvLine": 18,
+          "elapsedSec": 14400,
+          "good": 188,
+          "modes": [
+            "normal",
+            "normal",
+            "slow",
+            "normal",
+            "normal"
+          ],
+          "rejected": 7,
+          "replayGood": 192,
+          "replayRejected": 8
+        },
+        {
+          "csvLine": 19,
+          "elapsedSec": 15300,
+          "good": 195,
+          "modes": [
+            "normal",
+            "normal",
+            "slow",
+            "normal",
+            "normal"
+          ],
+          "rejected": 8,
+          "replayGood": 201,
+          "replayRejected": 8
+        },
+        {
+          "csvLine": 20,
+          "elapsedSec": 16200,
+          "good": 203,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 8,
+          "replayGood": 208,
+          "replayRejected": 8
+        },
+        {
+          "csvLine": 21,
+          "elapsedSec": 17100,
+          "good": 216,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 9,
+          "replayGood": 222,
+          "replayRejected": 9
+        },
+        {
+          "csvLine": 22,
+          "elapsedSec": 18000,
+          "good": 232,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 9,
+          "replayGood": 238,
+          "replayRejected": 9
+        },
+        {
+          "csvLine": 23,
+          "elapsedSec": 18900,
+          "good": 246,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 10,
+          "replayGood": 252,
+          "replayRejected": 10
+        },
+        {
+          "csvLine": 24,
+          "elapsedSec": 19800,
+          "good": 262,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 10,
+          "replayGood": 267,
+          "replayRejected": 11
+        },
+        {
+          "csvLine": 25,
+          "elapsedSec": 20700,
+          "good": 276,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 11,
+          "replayGood": 282,
+          "replayRejected": 11
+        },
+        {
+          "csvLine": 26,
+          "elapsedSec": 21600,
+          "good": 288,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "slow",
+            "normal"
+          ],
+          "rejected": 12,
+          "replayGood": 297,
+          "replayRejected": 12
+        },
+        {
+          "csvLine": 27,
+          "elapsedSec": 22500,
+          "good": 298,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 12,
+          "replayGood": 306,
+          "replayRejected": 12
+        },
+        {
+          "csvLine": 28,
+          "elapsedSec": 23400,
+          "good": 313,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 13,
+          "replayGood": 321,
+          "replayRejected": 13
+        },
+        {
+          "csvLine": 29,
+          "elapsedSec": 24300,
+          "good": 327,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 13,
+          "replayGood": 336,
+          "replayRejected": 14
+        },
+        {
+          "csvLine": 30,
+          "elapsedSec": 25200,
+          "good": 339,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 14,
+          "replayGood": 353,
+          "replayRejected": 14
+        },
+        {
+          "csvLine": 31,
+          "elapsedSec": 26100,
+          "good": 353,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 14,
+          "replayGood": 366,
+          "replayRejected": 15
+        },
+        {
+          "csvLine": 32,
+          "elapsedSec": 27000,
+          "good": 365,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 15,
+          "replayGood": 379,
+          "replayRejected": 15
+        },
+        {
+          "csvLine": 33,
+          "elapsedSec": 27900,
+          "good": 378,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 15,
+          "replayGood": 392,
+          "replayRejected": 16
+        },
+        {
+          "csvLine": 34,
+          "elapsedSec": 28800,
+          "good": 390,
+          "modes": [
+            "normal",
+            "normal",
+            "normal",
+            "normal",
+            "normal"
+          ],
+          "rejected": 16,
+          "replayGood": 406,
+          "replayRejected": 16
+        }
+      ],
+      "plan": 500,
+      "quality": {
+        "maxGapSec": 900,
+        "rowCount": 33,
+        "warnings": []
+      },
+      "schemaVersion": 1,
+      "shiftDurationSec": 28800,
+      "source": "synthetic_example",
+      "summary": {
+        "checkpointCount": 3,
+        "flowMae": 134.67,
+        "good": 390,
+        "planDelta": -110,
+        "rateMae": 21,
+        "rejectPct": 3.94,
+        "rejected": 16,
+        "replayGood": 406
+      }
+    }
+  },
+  "basis": {
+    "rowCount": 33,
+    "good": 390,
+    "rejected": 16,
+    "checkpointCount": 3
+  },
+  "parameters": [
+    {
+      "key": "plan",
+      "label": "План смены",
+      "unit": "изд.",
+      "a": 410,
+      "b": 500,
+      "delta": 90
+    },
+    {
+      "key": "arrival",
+      "label": "Интервал подачи",
+      "unit": "с",
+      "a": 65,
+      "b": 65,
+      "delta": 0
+    },
+    {
+      "key": "P01",
+      "label": "Цикл P01",
+      "unit": "с",
+      "a": 48,
+      "b": 48,
+      "delta": 0
+    },
+    {
+      "key": "P02",
+      "label": "Цикл P02",
+      "unit": "с",
+      "a": 52,
+      "b": 52,
+      "delta": 0
+    },
+    {
+      "key": "P03",
+      "label": "Цикл P03",
+      "unit": "с",
+      "a": 58,
+      "b": 58,
+      "delta": 0
+    },
+    {
+      "key": "P04",
+      "label": "Цикл P04",
+      "unit": "с",
+      "a": 50,
+      "b": 50,
+      "delta": 0
+    },
+    {
+      "key": "P05",
+      "label": "Цикл P05",
+      "unit": "с",
+      "a": 55,
+      "b": 55,
+      "delta": 0
+    },
+    {
+      "key": "B01",
+      "label": "Буфер B01",
+      "unit": "мест",
+      "a": 6,
+      "b": 6,
+      "delta": 0
+    },
+    {
+      "key": "B02",
+      "label": "Буфер B02",
+      "unit": "мест",
+      "a": 6,
+      "b": 6,
+      "delta": 0
+    },
+    {
+      "key": "B03",
+      "label": "Буфер B03",
+      "unit": "мест",
+      "a": 6,
+      "b": 6,
+      "delta": 0
+    },
+    {
+      "key": "B04",
+      "label": "Буфер B04",
+      "unit": "мест",
+      "a": 6,
+      "b": 6,
+      "delta": 0
+    }
+  ],
+  "metrics": [
+    {
+      "key": "replayGood",
+      "label": "Выпуск при воспроизведении",
+      "a": 406,
+      "b": 406,
+      "delta": 0
+    },
+    {
+      "key": "flowMae",
+      "label": "Ошибка модели · MAE",
+      "a": 134.67,
+      "b": 134.67,
+      "delta": 0
+    },
+    {
+      "key": "rateMae",
+      "label": "Ошибка по темпу · MAE",
+      "a": 21,
+      "b": 21,
+      "delta": 0
+    },
+    {
+      "key": "planDelta",
+      "label": "Отклонение факта от плана",
+      "a": -20,
+      "b": -110,
+      "delta": -90
+    }
+  ],
+  "notices": [
+    "Изменён только план: меняется отклонение от него, а воспроизведение и прогнозы остаются прежними.",
+    "Для прежнего отчёта использованы известные учебные нормативы его метода. Сохранённые результаты не пересчитываются.",
+    "На срезах этой смены средние ошибки модели в A и B совпали.",
+    "Изменение расчётного выпуска не является приростом производства. Подбор параметров по этой смене требует последующей проверки на независимых сменах."
+  ],
+  "series": [
+    {
+      "elapsedSec": 0,
+      "actual": 0,
+      "a": 0,
+      "b": 0
+    },
+    {
+      "elapsedSec": 900,
+      "actual": 10,
+      "a": 10,
+      "b": 10
+    },
+    {
+      "elapsedSec": 1800,
+      "actual": 23,
+      "a": 24,
+      "b": 24
+    },
+    {
+      "elapsedSec": 2700,
+      "actual": 35,
+      "a": 37,
+      "b": 37
+    },
+    {
+      "elapsedSec": 3600,
+      "actual": 48,
+      "a": 50,
+      "b": 50
+    },
+    {
+      "elapsedSec": 4500,
+      "actual": 61,
+      "a": 64,
+      "b": 64
+    },
+    {
+      "elapsedSec": 5400,
+      "actual": 73,
+      "a": 77,
+      "b": 77
+    },
+    {
+      "elapsedSec": 6300,
+      "actual": 86,
+      "a": 90,
+      "b": 90
+    },
+    {
+      "elapsedSec": 7200,
+      "actual": 99,
+      "a": 103,
+      "b": 103
+    },
+    {
+      "elapsedSec": 8100,
+      "actual": 100,
+      "a": 105,
+      "b": 105
+    },
+    {
+      "elapsedSec": 9000,
+      "actual": 100,
+      "a": 105,
+      "b": 105
+    },
+    {
+      "elapsedSec": 9900,
+      "actual": 114,
+      "a": 118,
+      "b": 118
+    },
+    {
+      "elapsedSec": 10800,
+      "actual": 128,
+      "a": 133,
+      "b": 133
+    },
+    {
+      "elapsedSec": 11700,
+      "actual": 144,
+      "a": 147,
+      "b": 147
+    },
+    {
+      "elapsedSec": 12600,
+      "actual": 158,
+      "a": 163,
+      "b": 163
+    },
+    {
+      "elapsedSec": 13500,
+      "actual": 173,
+      "a": 178,
+      "b": 178
+    },
+    {
+      "elapsedSec": 14400,
+      "actual": 188,
+      "a": 192,
+      "b": 192
+    },
+    {
+      "elapsedSec": 15300,
+      "actual": 195,
+      "a": 201,
+      "b": 201
+    },
+    {
+      "elapsedSec": 16200,
+      "actual": 203,
+      "a": 208,
+      "b": 208
+    },
+    {
+      "elapsedSec": 17100,
+      "actual": 216,
+      "a": 222,
+      "b": 222
+    },
+    {
+      "elapsedSec": 18000,
+      "actual": 232,
+      "a": 238,
+      "b": 238
+    },
+    {
+      "elapsedSec": 18900,
+      "actual": 246,
+      "a": 252,
+      "b": 252
+    },
+    {
+      "elapsedSec": 19800,
+      "actual": 262,
+      "a": 267,
+      "b": 267
+    },
+    {
+      "elapsedSec": 20700,
+      "actual": 276,
+      "a": 282,
+      "b": 282
+    },
+    {
+      "elapsedSec": 21600,
+      "actual": 288,
+      "a": 297,
+      "b": 297
+    },
+    {
+      "elapsedSec": 22500,
+      "actual": 298,
+      "a": 306,
+      "b": 306
+    },
+    {
+      "elapsedSec": 23400,
+      "actual": 313,
+      "a": 321,
+      "b": 321
+    },
+    {
+      "elapsedSec": 24300,
+      "actual": 327,
+      "a": 336,
+      "b": 336
+    },
+    {
+      "elapsedSec": 25200,
+      "actual": 339,
+      "a": 353,
+      "b": 353
+    },
+    {
+      "elapsedSec": 26100,
+      "actual": 353,
+      "a": 366,
+      "b": 366
+    },
+    {
+      "elapsedSec": 27000,
+      "actual": 365,
+      "a": 379,
+      "b": 379
+    },
+    {
+      "elapsedSec": 27900,
+      "actual": 378,
+      "a": 392,
+      "b": 392
+    },
+    {
+      "elapsedSec": 28800,
+      "actual": 390,
+      "a": 406,
+      "b": 406
+    }
+  ],
+  "checkpoints": [
+    {
+      "elapsedSec": 7200,
+      "actual": 390,
+      "a": 101,
+      "b": 101,
+      "delta": 0,
+      "errorA": -289,
+      "errorB": -289,
+      "rate": 405
+    },
+    {
+      "elapsedSec": 14400,
+      "actual": 390,
+      "a": 308,
+      "b": 308,
+      "delta": 0,
+      "errorA": -82,
+      "errorB": -82,
+      "rate": 428
+    },
+    {
+      "elapsedSec": 21600,
+      "actual": 390,
+      "a": 357,
+      "b": 357,
+      "delta": 0,
+      "errorA": -33,
+      "errorB": -33,
+      "rate": 400
+    }
+  ],
+  "exportedAt": "2026-10-03T17:15:44.628Z"
+}

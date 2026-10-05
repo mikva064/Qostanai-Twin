@@ -1,0 +1,16 @@
+.history-configuration-picker,.history-report-configuration{padding:18px;margin:0 0 20px;border:1px solid #dce6d4;border-radius:8px;background:#f6f9f1;min-width:0}
+.history-report-configuration{margin-top:18px;background:#fcfdf9}
+.history-configuration-heading{display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:space-between}
+.history-configuration-heading label{display:flex;flex-direction:column;gap:8px;min-width:0;font-size:12px;font-weight:600;color:#557148;flex:1}
+.history-configuration-heading select{width:100%;max-width:360px;min-width:0;padding:10px 12px;border:1px solid #d5e0ce;border-radius:6px;background:white;color:#35562e;font:inherit;font-weight:400}
+.history-configuration-heading a{font-size:12px;color:#416d38;line-height:1.6}
+.history-configuration-heading h3{font-size:13px;color:#49643b;margin:0}
+.history-configuration-heading .button{font-size:11px;white-space:normal}
+.history-configuration-values{display:grid;grid-template-columns:.8fr 1.2fr 1fr;gap:16px;margin:18px 0 12px}
+.history-configuration-values dt{font-size:11px;color:#728467;line-height:1.6}
+.history-configuration-values dd{font-size:14px;color:#3d5e32;margin:5px 0 0;font-variant-numeric:tabular-nums;line-height:1.6;overflow-wrap:anywhere}
+.history-configuration-picker>p,.history-report-configuration>p{font-size:11px;color:#78896c;line-height:1.7;margin:0;overflow-wrap:anywhere}
+.history-configuration-picker .history-configuration-changed{color:#8d662d;background:#fff4da;border-radius:5px;padding:10px 12px;margin-top:12px}
+.history-configuration-heading select:focus-visible{outline:3px solid #579d72;outline-offset:3px}
+@media(max-width:900px){.history-configuration-values{grid-template-columns:1fr 1fr}.history-configuration-heading label{flex-basis:100%}.history-configuration-picker,.history-report-configuration{padding:14px}}
+@media(max-width:520px){.history-configuration-values{grid-template-columns:1fr;gap:10px}.history-configuration-heading select{max-width:none}.history-configuration-heading .button{width:100%;justify-content:center}}
