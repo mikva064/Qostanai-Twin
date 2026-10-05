@@ -38,7 +38,7 @@ export default function HistoryPanel({ snapshot }: { snapshot: TwinSnapshot }) {
   const [plan, setPlan] = useState('410');
   const [configuration, setConfiguration] = useState(defaultConfiguration);
   const [configurationSource, setConfigurationSource] = useState<'defaults' | 'current' | 'saved'>('defaults');
-  const [configurationLabel, setConfigurationLabel] = useState('Учебные нормативы');
+  const [configurationLabel, setConfigurationLabel] = useState('Базовые нормативы');
   const [busy, setBusy] = useState(true);
   const running = useRef(false);
   const fileInput = useRef<HTMLInputElement>(null);
@@ -52,7 +52,7 @@ export default function HistoryPanel({ snapshot }: { snapshot: TwinSnapshot }) {
   const selectConfiguration = (source: 'defaults' | 'current') => {
     const value = source === 'defaults' ? defaultConfiguration() : configurationFromState(snapshot.state);
     setConfiguration(value); setPlan(String(value.shiftPlan)); setConfigurationSource(source);
-    setConfigurationLabel(source === 'defaults' ? 'Учебные нормативы' : 'Копия текущих настроек');
+    setConfigurationLabel(source === 'defaults' ? 'Базовые нормативы' : 'Копия текущих настроек');
     setNotice('Параметры выбраны для следующего импорта. Уже сохранённый отчёт не изменён.');
   };
   const fail = (e: unknown) => setError(e instanceof HistoryError ? e : new HistoryError(e instanceof Error ? e.message : 'Не удалось обработать историю.'));
@@ -88,11 +88,11 @@ export default function HistoryPanel({ snapshot }: { snapshot: TwinSnapshot }) {
   };
   const sample = () => action(async () => {
     const response = await fetch('/api/v1/history/example.csv', {cache:'no-store', signal:AbortSignal.timeout(10000)});
-    if (!response.ok) throw new HistoryError('Учебный файл недоступен. Проверьте версию сервера.');
+    if (!response.ok) throw new HistoryError('Не удалось загрузить пример файла. Повторите позже.');
     setFile({name:'demo-shift.csv',text:await response.text()});
     if (fileInput.current) fileInput.current.value = '';
-    setConfiguration(defaultConfiguration()); setConfigurationSource('defaults'); setConfigurationLabel('Учебные нормативы');
-    setPlan('410'); setNotice('Учебный файл и учебные нормативы выбраны. Нажмите «Проверить и импортировать».');
+    setConfiguration(defaultConfiguration()); setConfigurationSource('defaults'); setConfigurationLabel('Базовые нормативы');
+    setPlan('410'); setNotice('Пример файла и базовые нормативы выбраны. Нажмите «Проверить и импортировать».');
   });
   const importFile = () => action(async () => {
     if (!file || !validPlan || (!supported && configurationSource !== 'defaults')) return;
@@ -110,10 +110,10 @@ export default function HistoryPanel({ snapshot }: { snapshot: TwinSnapshot }) {
     <div className="panel-heading"><div><span className="section-code">05 /</span><h2 id="history-title">История и проверка прогноза</h2></div><span className="scenario-badge">Одна смена · CSV</span></div>
     <div className="history-body">
       <p className="scenario-intro">Загрузите выпуск и режимы постов за полную смену. Выберите нормативы, по которым модель восстановит работу линии и рассчитает прошлые прогнозы. Параметры сохраняются вместе с результатом проверки.</p>
-      {!supported && <p className="settings-conflict" role="status">Для выбора нормативов запустите обновлённый сервер через start.cmd и обновите страницу. Сейчас импорт доступен с учебными нормативами; сохранённые отчёты можно просматривать.</p>}
+      {!supported && <p className="settings-conflict" role="status">Для выбора нормативов запустите обновлённый сервер через start.cmd и обновите страницу. Сейчас импорт доступен с базовыми нормативами; сохранённые отчёты можно просматривать.</p>}
       <div className="history-configuration-picker">
         <div className="history-configuration-heading"><label>Нормативы для следующего импорта<select aria-label="Нормативы для CSV" disabled={busy || !supported} value={configurationSource} onChange={e => { if (e.target.value !== 'saved') selectConfiguration(e.target.value as 'defaults' | 'current'); }}>
-          <option value="defaults">Учебные нормативы</option><option value="current">Копия текущих настроек</option>{configurationSource === 'saved' && <option value="saved">Из сохранённого отчёта</option>}
+          <option value="defaults">Базовые нормативы</option><option value="current">Копия текущих настроек</option>{configurationSource === 'saved' && <option value="saved">Из сохранённого отчёта</option>}
         </select></label>{configurationSource === 'current' && <button className="button compact" disabled={busy || !supported} onClick={() => selectConfiguration('current')}>Обновить из настроек</button>}<a href="#settings">Изменить настройки участка ↗</a></div>
         <ConfigurationSummary value={configuration}/>
         <p>{configurationLabel}. План смены можно изменить ниже. Выбор параметров не запускает новый сценарий.</p>
@@ -124,16 +124,16 @@ export default function HistoryPanel({ snapshot }: { snapshot: TwinSnapshot }) {
         <label>План этой смены<input aria-label="План импортируемой смены" type="number" min="1" max="100000" step="1" value={plan} disabled={busy} onChange={e=>setPlan(e.target.value)}/></label>
         <button className="button primary" disabled={importDisabled} onClick={importFile}>{busy ? 'Обработка…' : 'Проверить и импортировать'}</button>
       </div>
-      <div className="history-sample"><button className="button compact" disabled={busy} onClick={sample}>Выбрать учебный пример</button><a href="/api/v1/history/example.csv" download>Скачать пример CSV ↗</a><span>Синтетические данные, не данные АЛЛЮР</span></div>
+      <div className="history-sample"><button className="button compact" disabled={busy} onClick={sample}>Загрузить пример</button><a href="/api/v1/history/example.csv" download>Скачать пример CSV ↗</a></div>
       {file && <p className="history-file-status">К импорту: <strong>{file.name}</strong> · {format(new TextEncoder().encode(file.text).length/1024)} КиБ</p>}
       {notice && <p className="history-notice" role="status">{notice}</p>}
       {error && <div className="history-errors" role="alert"><strong>{error.message}</strong>{error.issues.length > 0 && <><ul>{error.issues.map((i,n)=><li key={n}>{i.row ? `Строка ${i.row}` : 'Файл'} · {i.column}: {i.message}</li>)}</ul>{error.totalIssues > error.issues.length && <p>Показано {error.issues.length} из {error.totalIssues} ошибок.</p>}</>}</div>}
-      <details className="history-format"><summary>Формат файла и правила проверки</summary><p>8 столбцов: <code>elapsed_sec,good,rejected,P01_mode,P02_mode,P03_mode,P04_mode,P05_mode</code>. Разделитель — запятая или точка с запятой. Порядок столбцов может отличаться.</p><p>Время — секунды от начала смены (0–28800); good и rejected — накопленные целые счётчики. Начало: 0, 0, 0. Режимы: normal, slow, stop. Запишите каждое изменение режима в момент его начала. Нужна последняя строка на 28800 с.</p><p>Минимум 3, максимум 6000 записей. Пропуски, дубликаты времени, убывающие счётчики и неизвестные режимы отклоняются. Файл с ошибками не сохраняется. Неполную смену можно добавить после её завершения.</p></details>
+      <details className="history-format"><summary>Формат файла и правила проверки</summary><p>Встроенный пример содержит синтетическую смену, а не данные АЛЛЮР. Загруженный пользователем CSV сохраняет свой источник; приложение не подтверждает его происхождение.</p><p>8 столбцов: <code>elapsed_sec,good,rejected,P01_mode,P02_mode,P03_mode,P04_mode,P05_mode</code>. Разделитель — запятая или точка с запятой. Порядок столбцов может отличаться.</p><p>Время — секунды от начала смены (0–28800); good и rejected — накопленные целые счётчики. Начало: 0, 0, 0. Режимы: normal, slow, stop. Запишите каждое изменение режима в момент его начала. Нужна последняя строка на 28800 с.</p><p>Минимум 3, максимум 6000 записей. Пропуски, дубликаты времени, убывающие счётчики и неизвестные режимы отклоняются. Файл с ошибками не сохраняется. Неполную смену можно добавить после её завершения.</p></details>
       <button className="button compact" disabled={busy} onClick={refreshImports}>Обновить список импортов</button>
       {entries.length > 0 && <label className="history-saved-label">Сохранённые импорты<select aria-label="Сохранённые импорты" value={report?.importId || ''} disabled={busy} onChange={e => {const id=e.target.value; void action(async()=>setReport(await source.load(id)));}}>{entries.map(e=><option key={e.importId} value={e.importId}>{e.fileName} · план {e.summary.good-e.summary.planDelta} · подача {e.configuration?.arrivalIntervalSec ?? 65} с · {new Date(e.createdAt).toLocaleString('ru-RU')} · {e.importId.slice(0,6)}</option>)}</select></label>}
-      {!report && <div className="scenario-empty"><span aria-hidden="true">↗</span><div><strong>Проверьте прогноз на завершённой смене</strong><p>Для показа выберите учебный пример и импортируйте его. Реальные данные можно подключить в том же формате.</p></div></div>}
+      {!report && <div className="scenario-empty"><span aria-hidden="true">↗</span><div><strong>Проверьте прогноз на завершённой смене</strong><p>Загрузите файл смены или выберите готовый пример.</p></div></div>}
       {report && <div className="history-report" aria-busy={busy}>
-        <div className="history-report-heading"><div><h3>{report.fileName}</h3><p>8 часов · {report.quality.rowCount} записей · план {report.plan} · максимум между записями {format(report.quality.maxGapSec/60)} мин</p></div><span className={`history-source ${report.source==='synthetic_example'?'synthetic':''}`}>{report.source==='synthetic_example'?'Учебная смена · синтетика':'CSV пользователя · источник не подтверждён'}</span></div>
+        <div className="history-report-heading"><div><h3>{report.fileName}</h3><p>8 часов · {report.quality.rowCount} записей · план {report.plan} · максимум между записями {format(report.quality.maxGapSec/60)} мин</p></div><span className={`history-source ${report.source==='synthetic_example'?'synthetic':''}`}>{report.source==='synthetic_example'?'Пример смены':'Загруженный CSV'}</span></div>
         <div className="history-report-configuration"><div className="history-configuration-heading"><h3>Параметры этого отчёта</h3><button className="button compact" disabled={busy || !supported} onClick={() => {
           const value = configurationForReport(report); setConfiguration(value); setPlan(String(value.shiftPlan)); setConfigurationSource('saved');
           setConfigurationLabel(`Из отчёта «${report.fileName}» от ${new Date(report.createdAt).toLocaleString('ru-RU')}`);

@@ -141,9 +141,9 @@ export default function App() {
     return () => cancelAnimationFrame(frame);
   }, [ready, activeSection]);
 
-  if (!snapshot && activeSection === 'agent') return <main className="case-standalone"><a href="#overview">← К учебной линии</a><AgentPanel/></main>;
-  if (!snapshot && activeSection === 'case') return <main className="case-standalone"><a href="#overview">← К учебной линии</a><CaseDataPanel/></main>;
-  if (!snapshot) return <div className="loading-state"><span className="brand-mark">Q</span><div><p>{error || 'Подключение к производственной линии…'}</p>{error && <button className="button" onClick={refresh}>Повторить подключение</button>}<p><a href="#case">Открыть данные кейса из документа</a></p></div></div>;
+  if (!snapshot && activeSection === 'agent') return <main className="case-standalone"><a href="#overview">← К линии</a><AgentPanel/></main>;
+  if (!snapshot && activeSection === 'case') return <main className="case-standalone"><a href="#overview">← К линии</a><CaseDataPanel/></main>;
+  if (!snapshot) return <div className="loading-state"><span className="brand-mark">Q</span><div><p>{error || 'Подключение к производственной линии…'}</p>{error && <button className="button" onClick={refresh}>Повторить подключение</button>}<p><a href="#case">Открыть показатели производства</a></p></div></div>;
   const { state, forecast: prediction } = snapshot;
   const { paused, speed } = snapshot.controls;
   const disconnected = Boolean(error) || stale;
@@ -171,20 +171,20 @@ export default function App() {
       <a className="brand" href="#overview" aria-label="Qostanai Twin, обзор"><span className="brand-mark">Q<span/></span><span>QOSTANAI<strong>TWIN<span className="brand-dot">.</span></strong></span></a>
       <div className="workspace-label">ПРОИЗВОДСТВО</div>
       <nav aria-label="Основная навигация">
-        {([['overview', 'grid', 'Обзор'], ['case', 'line', 'Данные кейса'], ['agent', 'pulse', 'ИИ-агент'], ['production', 'line', 'Линия'], ['scenarios', 'layers', 'Сценарии'], ['events', 'pulse', 'События'], ['history', 'clock', 'История'], ['archive', 'box', 'Архив'], ['settings', 'tool', 'Настройки'], ['demo', 'play', 'Показ']] as const).map(([id, icon, label]) => <a key={id} aria-label={label} aria-current={activeSection === id ? 'location' : undefined} className={activeSection === id ? 'nav-item active' : 'nav-item'} href={`#${id}`} onClick={() => setActiveSection(id)}><Icon name={icon}/><span>{label}</span>{id === 'events' && activeIncidents.length > 0 && <span className="nav-count">{activeIncidents.length}</span>}</a>)}
+        {([['overview', 'grid', 'Обзор'], ['case', 'line', 'Показатели'], ['agent', 'pulse', 'ИИ-агент'], ['production', 'line', 'Линия'], ['scenarios', 'layers', 'Сценарии'], ['events', 'pulse', 'События'], ['history', 'clock', 'История'], ['archive', 'box', 'Архив'], ['settings', 'tool', 'Настройки'], ['demo', 'play', 'Показ']] as const).map(([id, icon, label]) => <a key={id} aria-label={label} aria-current={activeSection === id ? 'location' : undefined} className={activeSection === id ? 'nav-item active' : 'nav-item'} href={`#${id}`} onClick={() => setActiveSection(id)}><Icon name={icon}/><span>{label}</span>{id === 'events' && activeIncidents.length > 0 && <span className="nav-count">{activeIncidents.length}</span>}</a>)}
       </nav>
-      <div className="sidebar-bottom"><span className="sidebar-building"><Icon name="line" size={24}/></span><strong>Участок сборки</strong><span>Линия 01 · 5 постов</span><div className="sidebar-divider"/><span className="simulation-label"><i/> Демонстрационная модель</span><small>История сохраняется на сервере</small></div>
+      <div className="sidebar-bottom"><span className="sidebar-building"><Icon name="line" size={24}/></span><strong>Участок сборки</strong><span>Линия 01 · 5 постов</span></div>
     </aside>
 
     <main id="main">
-      <header className="topbar"><span>Производство <span className="breadcrumb-slash">/</span> <strong>{activeSection === 'case' ? 'Данные кейса' : activeSection === 'agent' ? 'ИИ-агент' : 'Мониторинг линии'}</strong></span><div className="connection-group"><span className={`connection-status ${disconnected && activeSection !== 'case' ? 'offline' : ''}`} role="status">{activeSection === 'case' ? 'Документ загружен' : disconnected ? 'Связь потеряна' : 'Сервер подключён'}</span><span className="demo-badge"><span/> {activeSection === 'case' ? 'Тестовый набор кейса' : 'Демонстрационные данные'}</span></div></header>
+      <header className="topbar"><span>Производство <span className="breadcrumb-slash">/</span> <strong>{activeSection === 'case' ? 'Показатели' : activeSection === 'agent' ? 'ИИ-агент' : 'Мониторинг линии'}</strong></span>{disconnected && activeSection !== 'case' && <span className="connection-status offline" role="status">Обновление данных приостановлено</span>}</header>
       <div className="page-content" id="overview">
         <CaseDataPanel visible={activeSection === 'case'}/>
         <AgentPanel visible={activeSection === 'agent'} snapshot={snapshot}/>
         <div hidden={activeSection === 'case' || activeSection === 'agent'}>
         <section className="page-heading">
           <div><div className="eyebrow">ОПЕРАТИВНЫЙ МОНИТОРИНГ</div><h1>Производственная линия</h1><p>Участок сборки <span>•</span> Смена 01 <span>•</span> 08:00–16:00</p></div>
-          <div className="shift-clock"><Icon name="clock" size={18}/><div><strong>{modelTime(state.elapsedSec, true)}</strong><span>Время модели · {disconnected ? 'нет связи' : ended ? 'смена завершена' : paused ? 'пауза' : `${speed}×`}</span></div></div>
+          <div className="shift-clock"><Icon name="clock" size={18}/><div><strong>{modelTime(state.elapsedSec, true)}</strong><span>Время сценария · {disconnected ? 'нет связи' : ended ? 'смена завершена' : paused ? 'пауза' : `${speed}×`}</span></div></div>
         </section>
         {disconnected && <div className="error-banner" role="alert">{error || 'Данные не обновлялись более 5 секунд.'} Показаны последние полученные значения. Управление временно недоступно. <button onClick={refresh}>Повторить</button></div>}
         {actionError && <div className="error-banner" role="alert">{actionError} <button onClick={() => setActionError(null)}>Закрыть</button></div>}
@@ -256,11 +256,11 @@ export default function App() {
           setSelectedId('P03'); setNotice('Новый сценарий создан с заданными параметрами.');
           return latest.current!.runId;
         }}/>
-        <footer className="page-footer"><span>Qostanai Twin <span>·</span> Прототип цифрового двойника</span><span>Условный участок · модельный прогноз, без ИИ</span></footer>
+        <footer className="page-footer"><span>Qostanai Twin <span>·</span> Цифровой двойник</span><details className="data-help"><summary>О данных и расчётах</summary><p>Линия показывает симуляцию одного участка с заданными нормативами. Подключения к оборудованию нет. Прогноз выпуска предполагает сохранение текущих режимов; модель поломок не обучена. Показатели в отдельном разделе взяты из тестового документа кейса.</p></details></footer>
         </div>
       </div>
     </main>
     <div className={`toast ${notice ? 'visible' : ''}`} role="status" aria-live="polite"><Icon name="check" size={18}/>{notice}</div>
-    <dialog ref={resetDialog} className="reset-dialog" onCancel={() => setResetOpen(false)} onClose={() => setResetOpen(false)}><Icon name="reset" size={28}/><h2>Начать сценарий заново?</h2><p>Линия вернётся к 08:45 на паузе. План, нормативы и буферы сохранятся. История текущего сценария останется в архиве сервера.</p>{(actionError || disconnected) && <p role="alert">{actionError || 'Нет связи с сервером. Дождитесь восстановления подключения.'}</p>}<div><button className="button" autoFocus onClick={() => setResetOpen(false)}>Отмена</button><button className="button primary" disabled={controlsDisabled} onClick={async () => { if (await send({ type: 'reset' })) { setSelectedId('P03'); setResetOpen(false); setNotice('Новый сценарий создан. Предыдущая история сохранена.'); } }}>Сбросить сценарий</button></div></dialog>
+    <dialog ref={resetDialog} className="reset-dialog" onCancel={() => setResetOpen(false)} onClose={() => setResetOpen(false)}><Icon name="reset" size={28}/><h2>Начать сценарий заново?</h2><p>Линия вернётся к 08:45 на паузе. План, нормативы и буферы сохранятся. История текущего сценария останется в архиве.</p>{(actionError || disconnected) && <p role="alert">{actionError || 'Нет связи с сервером. Дождитесь восстановления подключения.'}</p>}<div><button className="button" autoFocus onClick={() => setResetOpen(false)}>Отмена</button><button className="button primary" disabled={controlsDisabled} onClick={async () => { if (await send({ type: 'reset' })) { setSelectedId('P03'); setResetOpen(false); setNotice('Новый сценарий создан. Предыдущая история сохранена.'); } }}>Сбросить сценарий</button></div></dialog>
   </div>;
 }

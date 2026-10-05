@@ -8,7 +8,7 @@ import './archive.css';
 const source = new ArchiveSource();
 const format = (n: number) => new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 1 }).format(n);
 const realTime = (s: string) => new Date(s).toLocaleString('ru-RU');
-const sourceNames = { simulation: 'Демонстрационная модель', historical: 'Исторические данные', live: 'Данные оборудования' };
+const sourceNames = { simulation: 'Модель линии', historical: 'Исторические данные', live: 'Данные оборудования' };
 
 function RunChart({ snapshot }: { snapshot: StoredTwinSnapshot }) {
   const s = snapshot.state, width = 900, height = 220, left = 42, bottom = 34;
@@ -67,7 +67,7 @@ export default function ArchivePanel({ currentRunId, currentRevision }: { curren
   const summary = report ? summarizeRun(report) : null;
   const outdated = report?.runId === currentRunId && report.revision < currentRevision;
   return <section id="archive" className="panel archive-panel" aria-labelledby="archive-title">
-    <div className="panel-heading"><div><span className="section-code">06 /</span><h2 id="archive-title">Архив сценариев и отчёт смены</h2></div><span className="scenario-badge">Сохранено на сервере</span></div>
+    <div className="panel-heading"><div><span className="section-code">06 /</span><h2 id="archive-title">Архив сценариев и отчёт смены</h2></div></div>
     <div className="archive-body">
       <p className="archive-intro">Вернитесь к результатам прошлых запусков: выпуску, простоям и событиям. Каждый сброс начинает новый сценарий, сохраняя предыдущий.</p>
       <div className="archive-toolbar">
@@ -84,8 +84,8 @@ export default function ArchivePanel({ currentRunId, currentRevision }: { curren
       {!busy && !error && !report && <div className="scenario-empty"><div><strong>Архив пока пуст</strong><p>Здесь появятся сохранённые сценарии этой базы.</p></div></div>}
       {report && s && summary && <div className="archive-report" aria-busy={busy}>
         <div className="archive-print-heading">Qostanai Twin · Отчёт производственного сценария</div>
-        <div className="archive-report-title"><div><span className="eyebrow">{report.runId === currentRunId ? 'СНИМОК ТЕКУЩЕГО СЦЕНАРИЯ' : 'АРХИВНЫЙ СЦЕНАРИЙ'}</span><h3>{summary.ended ? 'Итоги смены' : `Промежуточный срез на ${modelTime(s.elapsedSec)}`}</h3><p>Сохранён {realTime(report.savedAt)} · модельное время {modelTime(s.elapsedSec)} · версия {report.revision}</p></div><span className="history-source synthetic">{sourceNames[report.source]}{report.source === 'simulation' && ' · не данные АЛЛЮР'}</span></div>
-        <p className="archive-id">Сценарий {report.runId}</p>
+        <div className="archive-report-title"><div><span className="eyebrow">{report.runId === currentRunId ? 'СНИМОК ТЕКУЩЕГО СЦЕНАРИЯ' : 'АРХИВНЫЙ СЦЕНАРИЙ'}</span><h3>{summary.ended ? 'Итоги смены' : `Промежуточный срез на ${modelTime(s.elapsedSec)}`}</h3><p>Сохранён {realTime(report.savedAt)} · время сценария {modelTime(s.elapsedSec)}</p></div><span className="history-source synthetic">{sourceNames[report.source]}</span></div>
+        
         <p className="archive-readonly">Сохранённый снимок для просмотра. Управление текущей линией — в разделе «Линия».</p>
         {outdated && <p className="scenario-stale archive-stale">Текущая линия уже изменилась. Нажмите «Обновить архив», чтобы получить новый срез. Отчёт и экспорт относятся к показанной версии.</p>}
         <div className="archive-metrics">
@@ -105,7 +105,7 @@ export default function ArchivePanel({ currentRunId, currentRevision }: { curren
         <h3 className="archive-section-title">Журнал событий · {s.incidents.length}</h3>
         <div className="archive-table-scroll archive-events" tabIndex={0} aria-label="События сохранённого сценария"><table><thead><tr><th scope="col">Начало</th><th scope="col">Событие</th><th scope="col">Пост</th><th scope="col">Состояние на срезе</th></tr></thead><tbody>{[...s.incidents].sort((a, b) => a.startedAtSec - b.startedAtSec).map(e => <tr key={e.id}><td>{modelTime(e.startedAtSec)}</td><th scope="row">{e.title}<span>{e.detail}</span></th><td>{e.stationId ?? 'Линия'}</td><td>{e.severity === 'info' ? 'Информация' : e.resolvedAtSec !== null ? `Закрыт в ${modelTime(e.resolvedAtSec)}` : e.acknowledged ? 'Принят в работу' : 'Требует внимания'}</td></tr>)}</tbody></table></div>
         {!s.incidents.length && <p className="archive-caption">Событий в этом сценарии нет.</p>}
-        <p className="archive-report-foot">{report.source === 'simulation' ? 'Учебная модель одного участка. Параметры и качество продукции заданы для демонстрации.' : 'Источник указан в сохранённом снимке.'} Отчёт фиксирует результат сценария и не подтверждает эффект на предприятии.</p>
+        <details className="archive-report-foot data-help"><summary>О данных отчёта</summary><p>Сценарий {report.runId} · версия {report.revision}</p><p>{report.source === 'simulation' ? 'Учебная модель одного участка. Параметры и качество продукции заданы для демонстрации.' : 'Источник указан в сохранённом снимке.'} Отчёт фиксирует результат сценария и не подтверждает эффект на предприятии.</p></details>
       </div>}
     </div>
   </section>;

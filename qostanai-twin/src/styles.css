@@ -32,3 +32,5 @@ main{margin-left:204px;flex:1;min-width:0}.topbar{height:65px;background:#fff;bo
 .loading-state>div{max-width:440px;line-height:1.6;padding-right:20px}
 .loading-state .button{margin-top:16px}
 @media(max-width:720px){.connection-group{gap:8px}.connection-status{font-size:11px}}
+
+.data-help{font-size:12px;line-height:1.65;color:#748176}.data-help summary{cursor:pointer;width:fit-content;color:#5b745f}.data-help summary:hover{color:#315b3c}.data-help p{margin-top:10px}.data-help[open]>summary{margin-bottom:10px}.page-footer>.data-help{max-width:520px;text-align:left}.page-footer>.data-help summary{margin-left:auto}.agent-connection{margin-bottom:14px}.agent-connection .agent-status{margin-top:12px}.agent-setup>.data-help{margin-top:8px}.case-toolbar>.button{margin-left:auto}@media(max-width:640px){.page-footer{flex-wrap:wrap}.page-footer>.data-help summary{margin-left:0}}
