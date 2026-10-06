@@ -184,11 +184,16 @@ def create_app(db_path=None, start_ticker=True, clock=None, agent_factory=None):
 
     @app.exception_handler(AgentError)
     async def agent_error(request, error):
-        return JSONResponse({'detail': error.message}, status_code=error.status)
+        LOG.warning('Agent request failed: %s (HTTP %s)', error.code, error.status)
+        return JSONResponse({'detail': error.message, 'code': error.code}, status_code=error.status)
 
     @app.get('/api/v1/agent/status')
     def agent_status(request: Request):
         return request.app.state.agent.status()
+
+    @app.post('/api/v1/agent/check')
+    async def agent_check(request: Request):
+        return await request.app.state.agent.check_connection()
 
     @app.post('/api/v1/agent/ask')
     async def agent_ask(payload: AgentRequest, request: Request):

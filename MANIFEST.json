@@ -1,6 +1,6 @@
 {
   "version": "0.12.0",
-  "builtAt": "2026-10-06T06:17:33.343800+00:00",
+  "builtAt": "2026-10-06T06:42:36.835566+00:00",
   "files": [
     {
       "path": "START-HERE.txt",
@@ -34,8 +34,8 @@
     },
     {
       "path": "qostanai-twin/backend/agent.py",
-      "bytes": 19480,
-      "sha256": "0f49229dc7cd063067566d9428ae90b0ca3da2d303626d28b025ba6a532e765b"
+      "bytes": 23323,
+      "sha256": "f6816f72ab16c0cb711eadf0caee11354f9d638fcf9abe074d02d6f416068a6a"
     },
     {
       "path": "qostanai-twin/backend/analysis.py",
@@ -44,8 +44,8 @@
     },
     {
       "path": "qostanai-twin/backend/api.py",
-      "bytes": 11335,
-      "sha256": "ff9b979e912de668e3d709987bf2581db3d1941dde8fad4aed735d0c732f612b"
+      "bytes": 11586,
+      "sha256": "7a744e2df6dbc1f22e18a1c40a4ea37400ec688c36147ba45a25233bc210f61e"
     },
     {
       "path": "qostanai-twin/backend/history_import.py",
@@ -69,8 +69,8 @@
     },
     {
       "path": "qostanai-twin/backend/test_agent.py",
-      "bytes": 11731,
-      "sha256": "61828edbed3963778ebcb413570e00de793f8aec9d069f385106a031ce585c98"
+      "bytes": 16751,
+      "sha256": "2d427a1f4756670157f3cdeb47b73d7bf6c7379f00eab088ecb4be31ff64d93a"
     },
     {
       "path": "qostanai-twin/backend/test_agent_evaluation.py",
@@ -118,9 +118,9 @@
       "sha256": "d854281772ea93a32000c9185d7b7363d65a8236baef08d27802fa82ddd3b7a3"
     },
     {
-      "path": "qostanai-twin/dist/assets/index-Ba93pAu4.js",
-      "bytes": 354450,
-      "sha256": "79b429361fb2aa524179949c4a456ce22d52aac8679824841590c51a5f4784ba"
+      "path": "qostanai-twin/dist/assets/index-BAFsNUkt.js",
+      "bytes": 355340,
+      "sha256": "25e9e8d8b99a9e276526eac1992a38c1f5db08c70713e818ec2e42d09730182f"
     },
     {
       "path": "qostanai-twin/dist/assets/index-Du6qyTx7.css",
@@ -130,7 +130,7 @@
     {
       "path": "qostanai-twin/dist/build-info.json",
       "bytes": 66,
-      "sha256": "a55b15a0b489213749eca0dfb4a4a5d1408eff4f4b860c2de42134595ab58b90"
+      "sha256": "b757f24f160d47ff69c2284585637569b6e7013d70fc3da6f4f3d8dbb79a28fd"
     },
     {
       "path": "qostanai-twin/dist/examples/demo-shift.csv",
@@ -145,7 +145,7 @@
     {
       "path": "qostanai-twin/dist/index.html",
       "bytes": 779,
-      "sha256": "c45a1c6c7ae83fd13a5736a5808823576705c041bde8a8e18ce144a3121cb1c4"
+      "sha256": "4c2c67d22288932836c60ceeda6f279bae5212a57e6526e5bd8ea86816ca9a56"
     },
     {
       "path": "qostanai-twin/docs/AGENT_EVALUATION.md",
@@ -154,8 +154,8 @@
     },
     {
       "path": "qostanai-twin/docs/AI_AGENT.md",
-      "bytes": 9052,
-      "sha256": "15554ffd9ef50261957b7dfc9b60e303ffebd0179893c3ab94f4eecefe4bd307"
+      "bytes": 11099,
+      "sha256": "e2573b43981c42fc008059ff1d15e9bf59d5e9269187576c95de07233e01017c"
     },
     {
       "path": "qostanai-twin/docs/ARCHIVE.md",
@@ -214,8 +214,8 @@
     },
     {
       "path": "qostanai-twin/docs/VERIFICATION.md",
-      "bytes": 40011,
-      "sha256": "ad44d651a5d48644f1b8e132773f7f2208e968f3f692c54f96df46de78242c03"
+      "bytes": 42449,
+      "sha256": "852fa8dff550b3e6495bf516380917f7a8033d0b60dc9a43c1ad7e83ac1b964e"
     },
     {
       "path": "qostanai-twin/docs/agent-eval-cases.json",
@@ -329,8 +329,8 @@
     },
     {
       "path": "qostanai-twin/src/AgentPanel.tsx",
-      "bytes": 9389,
-      "sha256": "41f2c5950bd7fee96489fd162456a709e3610d1dcf69b40dea23d71ff08c5850"
+      "bytes": 10156,
+      "sha256": "b0e411fccf3e5b0271cc90513f3e0445cd6f990a4beef1e08df938b918476407"
     },
     {
       "path": "qostanai-twin/src/App.tsx",
@@ -384,8 +384,8 @@
     },
     {
       "path": "qostanai-twin/src/agent-source.ts",
-      "bytes": 4193,
-      "sha256": "002f0770d92297511a408d8acf12f58546230bf89f1395e93a6e6169a5e1f916"
+      "bytes": 4886,
+      "sha256": "b130d3c9aaf340d911ebc09f463030dea07b12dbeca298d466fb674f85bee157"
     },
     {
       "path": "qostanai-twin/src/agent.css",
@@ -499,8 +499,8 @@
     },
     {
       "path": "qostanai-twin/tests/agent-source.test.ts",
-      "bytes": 3954,
-      "sha256": "8457d87ed4ec7ba53ac143f41c260c7eeeee3c553296a9688dbeac236d411407"
+      "bytes": 5124,
+      "sha256": "4917f43314f310f428f4b9ef1ccf0f5ea9d0955208285acd9fb050e979e3bba6"
     },
     {
       "path": "qostanai-twin/tests/archive-source.test.ts",

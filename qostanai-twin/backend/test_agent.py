@@ -1,5 +1,7 @@
 import asyncio
 import json
+import socket
+import ssl
 import tempfile
 import unittest
 from copy import deepcopy
@@ -10,7 +12,7 @@ from uuid import uuid4
 import httpx
 from fastapi.testclient import TestClient
 
-from .agent import AgentError, FactoryAgent, agent_settings, case_metrics, responses_request
+from .agent import AgentError, FactoryAgent, agent_settings, case_metrics, model_check_request, responses_request
 from .api import create_app
 from .service import TwinService
 
@@ -164,6 +166,83 @@ class AgentTests(unittest.TestCase):
 
 
 class AgentApiTests(unittest.TestCase):
+    def test_connection_check_uses_server_key_without_generation_or_line_changes(self):
+        probe, generate = AsyncMock(), AsyncMock()
+        with tempfile.TemporaryDirectory() as temp:
+            app = create_app(Path(temp) / 'test.sqlite3', start_ticker=False,
+                             agent_factory=lambda service: FactoryAgent(service, settings=lambda: ('test-secret', 'test-model'), request=generate, probe=probe))
+            with TestClient(app) as client:
+                before = client.get('/api/v1/twin').json()
+                client.get('/api/v1/agent/status')
+                probe.assert_not_called()
+                self.assertEqual(client.post('/api/v1/agent/check', headers={'Origin': 'https://other.example'}).status_code, 403)
+                probe.assert_not_called()
+                response = client.post('/api/v1/agent/check')
+                self.assertEqual(response.status_code, 200)
+                self.assertTrue(response.json()['reachable'])
+                self.assertFalse(response.json()['generationTested'])
+                self.assertNotIn('test-secret', response.text)
+                probe.assert_awaited_once_with('test-model', 'test-secret')
+                generate.assert_not_called()
+                after = client.get('/api/v1/twin').json()
+                before.pop('receivedAt'); after.pop('receivedAt')
+                self.assertEqual(before, after)
+                probe.side_effect = AgentError(503, 'Доступ к сети запрещён', 'network_access_denied')
+                with self.assertLogs('qostanai', level='WARNING') as log:
+                    response = client.post('/api/v1/agent/check')
+                self.assertEqual(response.status_code, 503)
+                self.assertEqual(response.json()['code'], 'network_access_denied')
+                self.assertNotIn('test-secret', ''.join(log.output))
+                self.assertEqual(client.get('/api/v1/agent/status').json()['configured'], True)
+
+    def test_connection_check_without_key_makes_no_external_request(self):
+        probe = AsyncMock()
+        agent = FactoryAgent(None, settings=lambda: ('', 'test-model'), probe=probe)
+        with self.assertRaises(AgentError) as raised:
+            asyncio.run(agent.check_connection())
+        self.assertEqual(raised.exception.code, 'missing_key')
+        probe.assert_not_called()
+
+    def test_model_probe_only_reads_metadata_and_rejects_wrong_model(self):
+        fake = AsyncMock()
+        fake.__aenter__.return_value = fake
+        fake.get.return_value = httpx.Response(200, json={'id': 'test-model'})
+        with patch('backend.agent.httpx.AsyncClient', return_value=fake):
+            asyncio.run(model_check_request('test-model', 'test-secret'))
+            fake.get.assert_awaited_once_with('https://api.openai.com/v1/models/test-model', headers={'Authorization': 'Bearer test-secret'})
+            fake.post.assert_not_called()
+            fake.get.return_value = httpx.Response(200, json={'id': 'wrong-model'})
+            with self.assertRaises(AgentError) as raised:
+                asyncio.run(model_check_request('test-model', 'test-secret'))
+            self.assertEqual(raised.exception.code, 'invalid_provider_response')
+
+    def test_transport_errors_have_distinct_safe_messages_and_are_not_retried(self):
+        for cause, code, status in [(PermissionError(13, 'raw-secret'), 'network_access_denied', 503),
+                                    (ssl.SSLCertVerificationError(1, 'raw-secret'), 'tls_verification_failed', 502),
+                                    (socket.gaierror(11001, 'raw-secret'), 'dns_failed', 503),
+                                    (OSError('raw-secret'), 'connection_failed', 503)]:
+            error = httpx.ConnectError('raw-secret')
+            error.__cause__ = cause
+            with self.subTest(code=code):
+                fake = AsyncMock()
+                fake.__aenter__.return_value = fake
+                fake.post.side_effect = error
+                with patch('backend.agent.httpx.AsyncClient', return_value=fake), self.assertRaises(AgentError) as raised:
+                    asyncio.run(responses_request({}, 'test-secret'))
+                self.assertEqual(raised.exception.code, code)
+                self.assertEqual(raised.exception.status, status)
+                self.assertNotIn('raw-secret', raised.exception.message)
+                fake.post.assert_awaited_once()
+
+    def test_invalid_json_is_not_reported_as_a_connection_failure(self):
+        fake = AsyncMock()
+        fake.__aenter__.return_value = fake
+        fake.post.return_value = httpx.Response(200, text='<html>raw-secret</html>')
+        with patch('backend.agent.httpx.AsyncClient', return_value=fake), self.assertRaises(AgentError) as raised:
+            asyncio.run(responses_request({}, 'test-secret'))
+        self.assertEqual(raised.exception.code, 'invalid_provider_response')
+        self.assertNotIn('raw-secret', raised.exception.message)
+
     def test_status_request_validation_and_read_only_tool_roundtrip(self):
         request = AsyncMock(side_effect=[calls('get_case_metrics'), answer()])
         with tempfile.TemporaryDirectory() as temp:

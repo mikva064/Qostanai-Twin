@@ -2,6 +2,8 @@
 import asyncio
 import json
 import os
+import socket
+import ssl
 import threading
 import time
 from collections import deque
@@ -38,8 +40,9 @@ OEE и вероятность отказа не рассчитаны. LLM не �
 
 
 class AgentError(Exception):
-    def __init__(self, status, message):
+    def __init__(self, status, message, code='agent_error'):
         self.status, self.message = status, message
+        self.code = code
 
 
 def agent_settings(root=ROOT, environ=None):
@@ -106,16 +109,34 @@ def case_metrics(dataset, date):
                              'Загрузка не равна OEE. Причины брака неизвестны. Двух дат недостаточно для обучения прогноза.'])
 
 
-async def responses_request(payload, api_key):
+def connection_error(error):
+    """Classify causes without exposing credentials, payloads or provider text."""
+    causes, current = [], error
+    while current is not None and len(causes) < 8:
+        causes.append(current)
+        current = current.__cause__ or current.__context__
+    if any(isinstance(cause, PermissionError) or getattr(cause, 'winerror', None) == 10013 for cause in causes):
+        return AgentError(503, 'Серверу запрещён доступ к OpenAI. Перезапустите start.cmd из Проводника Windows; если ошибка останется, проверьте сетевые разрешения Python.', 'network_access_denied')
+    if any(isinstance(cause, ssl.SSLCertVerificationError) for cause in causes):
+        return AgentError(502, 'Не удалось проверить защищённое соединение с OpenAI. Проверьте сертификаты и сетевые настройки сервера.', 'tls_verification_failed')
+    if any(isinstance(cause, socket.gaierror) for cause in causes):
+        return AgentError(503, 'Сервер не может найти api.openai.com. Проверьте интернет и DNS на компьютере с сервером.', 'dns_failed')
+    return AgentError(503, 'Сервер не смог подключиться к OpenAI. Проверьте интернет и сетевые ограничения на компьютере с сервером.', 'connection_failed')
+
+
+async def openai_request(method, url, api_key, payload=None):
     try:
         async with httpx.AsyncClient(timeout=httpx.Timeout(25, connect=8), follow_redirects=False, trust_env=False) as client:
-            response = await client.post(RESPONSES_URL, headers={'Authorization': 'Bearer ' + api_key}, json=payload)
+            headers = {'Authorization': 'Bearer ' + api_key}
+            response = await client.post(url, headers=headers, json=payload) if method == 'POST' else await client.get(url, headers=headers)
         if response.status_code in (401, 403):
-            raise AgentError(503, 'OpenAI отклонил доступ. Проверьте ключ и доступ к выбранной модели на сервере.')
+            raise AgentError(503, 'OpenAI отклонил доступ. Проверьте ключ и доступ к выбранной модели на сервере.', 'provider_access_denied')
         if response.status_code == 429:
-            raise AgentError(429, 'Лимит или баланс OpenAI исчерпан. Проверьте настройки API и повторите позже.')
+            raise AgentError(429, 'Лимит или баланс OpenAI исчерпан. Проверьте настройки API и повторите позже.', 'provider_rate_limit')
+        if response.status_code == 404:
+            raise AgentError(502, 'Выбранная модель OpenAI не найдена или недоступна для ключа. Проверьте OPENAI_MODEL на сервере.', 'model_unavailable')
         if response.status_code >= 400:
-            raise AgentError(502, 'OpenAI не выполнил запрос. Проверьте модель и настройки API.')
+            raise AgentError(502, 'OpenAI не выполнил запрос. Проверьте модель и настройки API.', 'provider_http_error')
         if len(response.content) > 1024 * 1024:
             raise AgentError(502, 'Слишком большой ответ модели.')
         body = response.json()
@@ -123,16 +144,31 @@ async def responses_request(payload, api_key):
             raise ValueError('response shape')
         return body
     except httpx.TimeoutException:
-        raise AgentError(504, 'Модель не ответила вовремя. Повторите вопрос позже.') from None
-    except (httpx.HTTPError, ValueError):
-        raise AgentError(502, 'Не удалось получить корректный ответ OpenAI.') from None
+        raise AgentError(504, 'OpenAI не ответил вовремя. Повторите запрос позже.', 'provider_timeout') from None
+    except httpx.ConnectError as error:
+        raise connection_error(error) from None
+    except httpx.HTTPError:
+        raise AgentError(502, 'Соединение с OpenAI прервалось. Повторите запрос после проверки сети.', 'connection_interrupted') from None
+    except ValueError:
+        raise AgentError(502, 'OpenAI вернул ответ в неподдерживаемом формате. Повторите запрос позже.', 'invalid_provider_response') from None
+
+
+async def responses_request(payload, api_key):
+    return await openai_request('POST', RESPONSES_URL, api_key, payload)
+
+
+async def model_check_request(model, api_key):
+    body = await openai_request('GET', 'https://api.openai.com/v1/models/' + model, api_key)
+    if body.get('id') != model:
+        raise AgentError(502, 'OpenAI не подтвердил выбранную модель.', 'invalid_provider_response')
 
 
 class FactoryAgent:
-    def __init__(self, service, settings=None, request=None, dataset=None, clock=time.monotonic):
+    def __init__(self, service, settings=None, request=None, dataset=None, clock=time.monotonic, probe=None):
         self.service = service
         self.settings = settings or agent_settings
         self.request = request or responses_request
+        self.probe = probe or model_check_request
         self.dataset = dataset if dataset is not None else json.loads((ROOT / 'src/case-dataset.json').read_text(encoding='utf-8'))
         self.clock = clock
         self.slots = threading.BoundedSemaphore(2)
@@ -144,6 +180,21 @@ class FactoryAgent:
         return dict(schemaVersion=1, configured=bool(key), provider='openai', model=model,
                     scopes=['case', 'simulation'], dates=sorted({row['date'] for row in self.dataset['production']}),
                     readOnly=True, maxQuestionChars=2000)
+
+    async def check_connection(self):
+        key, model = self.settings()
+        if not key:
+            raise AgentError(503, 'ИИ-агент не подключён. Добавьте OPENAI_API_KEY в .env на сервере.', 'missing_key')
+        if not self.slots.acquire(blocking=False):
+            raise AgentError(429, 'Агент занят. Повторите проверку позже.')
+        try:
+            await asyncio.wait_for(self.probe(model, key), timeout=15)
+            return dict(schemaVersion=1, provider='openai', model=model, reachable=True,
+                        checkedAt=datetime.now(timezone.utc).isoformat(), generationTested=False)
+        except asyncio.TimeoutError:
+            raise AgentError(504, 'Проверка связи с OpenAI заняла слишком много времени. Повторите позже.', 'provider_timeout') from None
+        finally:
+            self.slots.release()
 
     async def ask(self, question, scope, date=None, run_id=None, history=None):
         key, model = self.settings()

@@ -1,5 +1,6 @@
 export type AgentScope = 'case' | 'simulation';
 export interface AgentStatus { schemaVersion: 1; configured: boolean; provider: 'openai'; model: string; scopes: AgentScope[]; dates: string[]; readOnly: true; maxQuestionChars: number }
+export interface AgentConnection { schemaVersion: 1; provider: 'openai'; model: string; reachable: true; checkedAt: string; generationTested: false }
 export interface AgentRequest { question: string; scope: AgentScope; date?: string; runId?: string; history: { role: 'user' | 'assistant'; content: string }[] }
 export interface AgentReply { schemaVersion: 1; provider: 'openai'; model: string; answer: string; context: { scope: AgentScope; date?: string; runId?: string; revision?: number }; tools: { name: string; arguments: Record<string, unknown>; result: Record<string, unknown> }[]; stale: boolean; answeredAt: string; readOnly: true }
 const object = (v: unknown): v is Record<string, unknown> => !!v && typeof v === 'object' && !Array.isArray(v);
@@ -23,6 +24,12 @@ export async function getAgentStatus(): Promise<AgentStatus> {
   const data = await read('/api/v1/agent/status');
   if (!object(data) || data.schemaVersion !== 1 || data.provider !== 'openai' || typeof data.configured !== 'boolean' || !text(data.model) || data.readOnly !== true || data.maxQuestionChars !== 2000 || !Array.isArray(data.dates) || !data.dates.length || !data.dates.every(day) || !Array.isArray(data.scopes) || !['case', 'simulation'].every(scope => Array.isArray(data.scopes) && data.scopes.includes(scope))) throw new Error('Несовместимые настройки агента. Обновите приложение.');
   return data as unknown as AgentStatus;
+}
+
+export async function checkAgentConnection(): Promise<AgentConnection> {
+  const data = await read('/api/v1/agent/check', { method: 'POST' });
+  if (!object(data) || data.schemaVersion !== 1 || data.provider !== 'openai' || !text(data.model) || data.reachable !== true || data.generationTested !== false || !text(data.checkedAt) || !Number.isFinite(Date.parse(data.checkedAt))) throw new Error('Сервер не подтвердил связь с OpenAI. Обновите приложение.');
+  return data as unknown as AgentConnection;
 }
 
 export async function askAgent(request: AgentRequest): Promise<AgentReply> {

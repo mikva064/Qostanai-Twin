@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { askAgent, getAgentStatus } from './agent-source.ts';
+import { askAgent, checkAgentConnection, getAgentStatus } from './agent-source.ts';
 import type { AgentReply, AgentRequest, AgentScope, AgentStatus } from './agent-source.ts';
 import type { TwinSnapshot } from './types.ts';
 import './agent.css';
@@ -11,13 +11,23 @@ interface Turn { question: string; reply: AgentReply }
 export default function AgentPanel({ visible = true, snapshot = null }: { visible?: boolean; snapshot?: TwinSnapshot | null }) {
   const [status, setStatus] = useState<AgentStatus | null>(null), [error, setError] = useState('');
   const [loading, setLoading] = useState(false), [busy, setBusy] = useState(false);
+  const [connection, setConnection] = useState('');
   const [scope, setScope] = useState<AgentScope>('case'), [date, setDate] = useState('2026-10-02');
   const [question, setQuestion] = useState(''), [turns, setTurns] = useState<Turn[]>([]);
   const token = useRef(0), sending = useRef(false), statusRequest = useRef(0);
-  const refresh = async () => {
-    const current = ++statusRequest.current; setLoading(true); setError('');
-    try { const next = await getAgentStatus(); if (current === statusRequest.current) { setStatus(next); setDate(old => next.dates.includes(old) ? old : [...next.dates].sort().at(-1)!); } }
-    catch (e) { if (current === statusRequest.current) { setStatus(null); setError(e instanceof Error ? e.message : 'Не удалось получить настройки.'); } }
+  const refresh = async (check = false) => {
+    const current = ++statusRequest.current; setLoading(true); setError(''); setConnection('');
+    let settingsLoaded = false;
+    try {
+      const next = await getAgentStatus(); settingsLoaded = true;
+      if (current !== statusRequest.current) return;
+      setStatus(next); setDate(old => next.dates.includes(old) ? old : [...next.dates].sort().at(-1)!);
+      if (check && next.configured) {
+        const result = await checkAgentConnection();
+        if (current === statusRequest.current) setConnection(`Доступ к ${result.model} подтверждён в ${new Date(result.checkedAt).toLocaleTimeString('ru-RU')}. Генерация ответа не проверялась.`);
+      }
+    }
+    catch (e) { if (current === statusRequest.current) { if (!settingsLoaded) setStatus(null); setError(e instanceof Error ? e.message : 'Не удалось проверить подключение.'); } }
     finally { if (current === statusRequest.current) setLoading(false); }
   };
   useEffect(() => { if (visible && !status) void refresh(); }, [visible]);
@@ -28,7 +38,7 @@ export default function AgentPanel({ visible = true, snapshot = null }: { visibl
   useEffect(() => { if (previousContext.current !== contextKey) { setTurns([]); token.current++; previousContext.current = contextKey; } }, [contextKey]);
   const submit = async () => {
     if (sending.current || !status?.configured || !question.trim() || (scope === 'simulation' && !snapshot)) return;
-    const request = ++token.current; sending.current = true; setBusy(true); setError('');
+    const request = ++token.current; sending.current = true; setBusy(true); setError(''); setConnection('');
     const asked = question.trim();
     const history = turns.slice(-4).flatMap(turn => [{ role: 'user' as const, content: turn.question }, { role: 'assistant' as const, content: turn.reply.answer.slice(0, 4000) }]);
     const input: AgentRequest = { question: asked, scope, history, ...(scope === 'case' ? { date } : { runId: snapshot!.runId }) };
@@ -40,7 +50,7 @@ export default function AgentPanel({ visible = true, snapshot = null }: { visibl
   return <section id="agent" className="agent-panel panel" hidden={!visible} aria-labelledby="agent-title">
     <div className="panel-heading"><div><span className="section-code">AI /</span><h2 id="agent-title">ИИ-агент производства</h2></div><span className="agent-mode">Чтение и расчёты</span></div>
     <div className="agent-body"><p className="agent-intro">Задайте вопрос своими словами. Агент выбирает инструменты, получает данные и формирует ответ с основаниями. Управление линией остаётся в её карточке.</p>
-      <details className="data-help agent-connection"><summary>Настройки агента</summary><div className="agent-status"><span>{loading ? 'Проверяем подключение…' : status ? status.configured ? `OpenAI · ${status.model} · ключ настроен` : 'Для ответов нужен ключ OpenAI API' : 'Сервер агента недоступен'}</span><button className="button compact" onClick={() => void refresh()} disabled={loading || busy}>Проверить подключение</button></div></details>
+      <details className="data-help agent-connection"><summary>Настройки агента</summary><div className="agent-status"><span>{loading ? 'Проверяем подключение…' : status ? status.configured ? `OpenAI · ${status.model} · ключ настроен` : 'Для ответов нужен ключ OpenAI API' : 'Сервер агента недоступен'}</span><button className="button compact" onClick={() => void refresh(true)} disabled={loading || busy}>Проверить подключение</button></div>{connection && <p role="status">{connection}</p>}<p>Проверка обращается к OpenAI без генерации ответа и не расходует токены модели.</p></details>
       {status && !status.configured && <div className="agent-setup"><strong>Агент ещё не настроен</strong><details className="data-help"><summary>Как подключить</summary><p>Скопируйте <code>.env.example</code> в <code>.env</code> рядом с <code>package.json</code> и заполните <code>OPENAI_API_KEY</code>. Затем нажмите «Проверить подключение». Ключ не вводится в чат и не попадает в GitHub.</p><p>Пока ключ не настроен, доступен <a href="#case">анализ показателей</a>.</p></details></div>}
       <div className="agent-context"><label>Источник<select disabled={busy} value={scope} onChange={e => setScope(e.target.value as AgentScope)}><option value="case">Показатели производства</option><option value="simulation">Модель линии</option></select></label>{scope === 'case' ? <label>Дата<select value={date} disabled={busy} onChange={e => setDate(e.target.value)}>{(status?.dates ?? ['2026-10-01', '2026-10-02']).map(day => <option key={day} value={day}>{day.split('-').reverse().join('.')}</option>)}</select></label> : <p>{snapshot ? 'Ответ будет основан на состоянии линии на момент вопроса.' : 'Дождитесь загрузки состояния линии.'}</p>}</div>
       <p className="agent-privacy">Вопрос, история чата и данные выбранного источника передаются в OpenAI.</p>

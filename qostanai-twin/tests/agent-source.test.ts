@@ -1,10 +1,24 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { askAgent, getAgentStatus } from '../src/agent-source.ts';
+import { askAgent, checkAgentConnection, getAgentStatus } from '../src/agent-source.ts';
 import type { AgentReply, AgentRequest } from '../src/agent-source.ts';
 
 const request: AgentRequest = { question: 'Проверь качество', scope: 'case', date: '2026-10-02', history: [] };
 const reply: AgentReply = { schemaVersion: 1, provider: 'openai', model: 'test-model', answer: 'Брак выше порога.', context: { scope: 'case', date: '2026-10-02' }, tools: [{ name: 'get_case_metrics', arguments: {}, result: { source: 'Тестовый DOCX' } }], stale: false, answeredAt: '2026-10-05T12:00:00Z', readOnly: true };
+
+test('connection check is explicit, sends no question or key, and requires server confirmation', async () => {
+  const original = globalThis.fetch;
+  const result = { schemaVersion: 1, provider: 'openai', model: 'test-model', reachable: true, checkedAt: '2026-10-06T08:00:00Z', generationTested: false };
+  try {
+    let count = 0;
+    globalThis.fetch = async (url, init) => { count++; assert.equal(url, '/api/v1/agent/check'); assert.equal(init?.method, 'POST'); assert.equal(init?.body, undefined); assert.equal(init?.headers, undefined); return Response.json(result); };
+    assert.deepEqual(await checkAgentConnection(), result); assert.equal(count, 1);
+    globalThis.fetch = async () => Response.json({ ...result, reachable: false });
+    await assert.rejects(checkAgentConnection(), /не подтвердил связь/);
+    globalThis.fetch = async () => Response.json({ detail: 'Серверу запрещён доступ к OpenAI', code: 'network_access_denied' }, { status: 503 });
+    await assert.rejects(checkAgentConnection(), /Серверу запрещён доступ/);
+  } finally { globalThis.fetch = original; }
+});
 
 test('configured and unconfigured status never needs a client API key', async () => {
   const original = globalThis.fetch;
