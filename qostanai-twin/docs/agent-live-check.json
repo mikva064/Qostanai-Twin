@@ -1,0 +1,27 @@
+{
+  "checkedAt": "2026-10-06T06:10:12.456441+00:00",
+  "caseId": "quality",
+  "scope": "case",
+  "date": "2026-10-02",
+  "model": "gpt-5.4-mini",
+  "apiCalls": 3,
+  "seconds": 8.03,
+  "stateUnchanged": true,
+  "tools": [
+    "get_case_metrics",
+    "get_case_downtime"
+  ],
+  "answer": "На окраске 2 октября доля брака **5,17%** — лимит **превышен**.\n\nЧто проверить первым:\n- **Окраска-1**, потому что там брак выше лимита **2%** на **3,17 п.п.**\n- Затем посмотреть связанный простой по срезу дня: по окраске простоев в записи нет; отдельно был простой на **сборке** и **сварке**, но причину брака по данным не определить.\n\nКлючевые числа:\n- Окраска: **5,17%** брака\n- Лимит: **2%**\n- Превышение: **3,17 п.п.**\n\nПроверяемое следующее действие: сверить по **Окраска-1** сменные журналы брака и настройки/параметры процесса на дату **2026-10-02**.\n\nИсточник: **Тестовый DOCX: работа линий, качество, производственный план и вводные**; срез **2026-10-02**.",
+  "automaticChecks": "checks_passed_needs_review",
+  "assistantReview": {
+    "reviewer": "Codex assistant",
+    "result": "passed_with_notes",
+    "notes": [
+      "Correct percentage, threshold, excess and date; no invented cause of defects.",
+      "The text omitted the underlying 6 of 116 counts. A prompt clarification was added after this run and has not been retested with a paid call.",
+      "Six remaining questions and human review are still pending."
+    ]
+  },
+  "humanReview": "pending",
+  "otherQuestionsVerified": false
+}
