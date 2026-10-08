@@ -21,10 +21,10 @@ export async function checkReadiness(): Promise<ReadinessReport> {
   ]);
   const checks: ReadinessCheck[] = [];
   let version: string | null = null, runId: string | null = null, revision: number | null = null;
-  if (api.status === 'fulfilled' && record(api.value) && record(api.value.info) && api.value.info.title === 'Qostanai Twin API' && typeof api.value.info.version === 'string') {
+  if (api.status === 'fulfilled' && record(api.value) && record(api.value.info) && api.value.info.title === 'Zauyt AI API' && typeof api.value.info.version === 'string') {
     version = api.value.info.version;
     checks.push({ id: 'api', title: 'Версия сервера', status: version === '0.8.0' ? 'ok' : 'warn', detail: `Работает API ${version}. ${version === '0.8.0' ? 'Совпадает с этим комплектом приложения.' : 'Версия отличается от комплекта. Остановите прежний сервер в его окне (Ctrl+C) и запустите start.cmd из обновлённой папки.'}` });
-  } else checks.push({ id: 'api', title: 'Версия сервера', status: 'error', detail: api.status === 'rejected' ? message(api.reason) : 'Не удалось подтвердить Qostanai Twin API.' });
+  } else checks.push({ id: 'api', title: 'Версия сервера', status: 'error', detail: api.status === 'rejected' ? message(api.reason) : 'Не удалось подтвердить Zauyt AI API.' });
   if (snapshot.status === 'fulfilled') {
     const s = snapshot.value; runId = s.runId; revision = s.revision;
     checks.push({ id: 'snapshot', title: 'Связь с моделью', status: 'ok', detail: 'Получен свежий корректный снимок линии.' });

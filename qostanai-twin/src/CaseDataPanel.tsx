@@ -19,7 +19,7 @@ export default function CaseDataPanel({ visible = true }: { visible?: boolean })
   const history = data.production.filter(item => item.section === section && item.date <= date).sort((a, b) => a.date.localeCompare(b.date));
   const exportReport = () => {
     const url = URL.createObjectURL(new Blob([JSON.stringify(caseExport(data, date), null, 2)], { type: 'application/json;charset=utf-8' }));
-    const link = document.createElement('a'); link.href = url; link.download = `qostanai-case-${date}.json`; document.body.append(link); link.click(); link.remove();
+    const link = document.createElement('a'); link.href = url; link.download = `zauyt-ai-case-${date}.json`; document.body.append(link); link.click(); link.remove();
     window.setTimeout(() => URL.revokeObjectURL(url), 1000);
   };
   return <section id="case" className="case-data" hidden={!visible} aria-labelledby="case-title">

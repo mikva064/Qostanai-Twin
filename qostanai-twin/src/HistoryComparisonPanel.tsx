@@ -54,7 +54,7 @@ export default function HistoryComparisonPanel({ entries, source, disabled }: { 
   const download = () => {
     if (!visible) return;
     const url = URL.createObjectURL(new Blob([JSON.stringify({ ...visible, exportedAt: new Date().toISOString() }, null, 2)], { type: 'application/json;charset=utf-8' }));
-    const anchor = document.createElement('a'); anchor.href = url; anchor.download = `qostanai-history-${aId.slice(0, 8)}-${bId.slice(0, 8)}.json`;
+    const anchor = document.createElement('a'); anchor.href = url; anchor.download = `zauyt-ai-history-${aId.slice(0, 8)}-${bId.slice(0, 8)}.json`;
     document.body.append(anchor); anchor.click(); anchor.remove();
     window.setTimeout(() => URL.revokeObjectURL(url), 1000);
   };

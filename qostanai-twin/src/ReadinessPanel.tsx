@@ -22,7 +22,7 @@ export default function ReadinessPanel({ runId, revision }: { runId: string; rev
     if (!report) return;
     const content = { ...report, interfaceVersion: packageInfo.version, note: 'Техническая проверка на указанное время. Внешний вид, проектор, презентация и резервное видео проверяются вручную.' };
     const url = URL.createObjectURL(new Blob([JSON.stringify(content, null, 2)], { type: 'application/json;charset=utf-8' }));
-    const link = document.createElement('a'); link.href = url; link.download = 'qostanai-readiness.json';
+    const link = document.createElement('a'); link.href = url; link.download = 'zauyt-ai-readiness.json';
     document.body.append(link); link.click(); link.remove(); window.setTimeout(() => URL.revokeObjectURL(url), 1000);
   };
   return <div className="readiness-panel">

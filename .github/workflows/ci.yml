@@ -1,4 +1,4 @@
-name: Test Qostanai Twin
+name: Test Zauyt AI
 on:
   push:
     branches: [main]

@@ -36,7 +36,7 @@ start.cmd проверяет комплект перед запуском. Пр�
 npm.cmd ci
 npm.cmd run build
 .\.venv\Scripts\python.exe -m scripts.package_release
-.\.venv\Scripts\python.exe -m scripts.package_release --verify ..\qostanai-twin-v0.12.0-demo.zip
+.\.venv\Scripts\python.exe -m scripts.package_release --verify ..\zauyt-ai-v0.12.0-demo.zip
 ```
 
 Можно явно задать `--pitch` и `--output`. Уже существующий ZIP не перезаписывается. Упаковщик отклоняет несовпадающую версию dist, добавляет размеры и SHA-256 каждого файла и проверяет архив после создания. Манифест обнаруживает повреждение файлов; он не является цифровой подписью издателя.

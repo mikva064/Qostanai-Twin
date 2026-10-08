@@ -18,7 +18,7 @@ from .analysis import compare_scenarios
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_MODEL = 'gpt-5.4-mini'
 RESPONSES_URL = 'https://api.openai.com/v1/responses'
-INSTRUCTIONS = '''Ты аналитический ИИ-агент Qostanai Twin. Отвечай по-русски, кратко и конкретно.
+INSTRUCTIONS = '''Ты аналитический ИИ-агент Zauyt AI. Отвечай по-русски, кратко и конкретно.
 Перед выводами вызови доступные инструменты. Числа и источник бери только из их результата.
 Сравнение восстановления всегда считай через compare_recovery; не оценивай эффект самостоятельно.
 Названия участков: welding — сварка, painting — окраска, assembly — сборка.

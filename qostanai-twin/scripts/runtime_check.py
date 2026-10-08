@@ -104,7 +104,7 @@ def inspect_server(port=4173):
     base = f'http://127.0.0.1:{port}'
     try:
         api = request_json(base, '/openapi.json', opener)
-        if not isinstance(api, dict) or api.get('info', {}).get('title') != 'Qostanai Twin API':
+        if not isinstance(api, dict) or api.get('info', {}).get('title') != 'Zauyt AI API':
             raise ValueError('Другой сервис')
         version = api['info'].get('version')
         state = request_json(base, '/api/v1/twin', opener)
@@ -119,9 +119,9 @@ def inspect_server(port=4173):
         interface_matches = not ready or request_text(base, '/', opener) == (ROOT / 'dist/index.html').read_text(encoding='utf-8')
         ready = ready and interface_matches
         return dict(kind='ready' if ready else 'outdated', version=version,
-                    detail=f'Qostanai Twin API {version}. ' + ('API и интерфейс соответствуют этому комплекту.' if ready else ('' if interface_matches else 'Сервер отдаёт другую сборку интерфейса. ') + 'Остановите прежний сервер в его окне (Ctrl+C), затем снова запустите start.cmd. Автоматической остановки нет.'))
+                    detail=f'Zauyt AI API {version}. ' + ('API и интерфейс соответствуют этому комплекту.' if ready else ('' if interface_matches else 'Сервер отдаёт другую сборку интерфейса. ') + 'Остановите прежний сервер в его окне (Ctrl+C), затем снова запустите start.cmd. Автоматической остановки нет.'))
     except (OSError, ValueError, KeyError, TypeError, AttributeError):
-        return dict(kind='occupied', detail=f'Порт {port} занят, но готовый Qostanai Twin не подтверждён. Проверьте открытые окна сервера; другой процесс автоматически не останавливается.')
+        return dict(kind='occupied', detail=f'Порт {port} занят, но готовый Zauyt AI не подтверждён. Проверьте открытые окна сервера; другой процесс автоматически не останавливается.')
 
 
 def print_checks(checks):
@@ -131,7 +131,7 @@ def print_checks(checks):
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(description='Проверка и запуск Qostanai Twin')
+    parser = argparse.ArgumentParser(description='Проверка и запуск Zauyt AI')
     parser.add_argument('mode', choices=['check', 'start'], nargs='?', default='check')
     parser.add_argument('--json', action='store_true', help='Вывести машинный отчёт, только для check')
     args = parser.parse_args(argv)
@@ -162,7 +162,7 @@ def main(argv=None):
             print('Используйте http://127.0.0.1:4173/#demo и обновите страницу. Вторая копия не запущена.')
             return 0
         return 2
-    print('Qostanai Twin: http://127.0.0.1:4173/#demo\nОставьте окно открытым. Остановка — Ctrl+C.', flush=True)
+    print('Zauyt AI: http://127.0.0.1:4173/#demo\nОставьте окно открытым. Остановка — Ctrl+C.', flush=True)
     try:
         return subprocess.call([sys.executable, '-m', 'uvicorn', 'backend.api:app', '--host', '127.0.0.1', '--port', '4173', '--workers', '1', '--no-access-log'], cwd=ROOT)
     except KeyboardInterrupt:

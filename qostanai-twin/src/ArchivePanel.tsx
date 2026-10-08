@@ -27,7 +27,7 @@ function RunChart({ snapshot }: { snapshot: StoredTwinSnapshot }) {
 function download(snapshot: StoredTwinSnapshot) {
   const blob = new Blob([JSON.stringify(snapshot, null, 2)], { type: 'application/json;charset=utf-8' });
   const url = URL.createObjectURL(blob), a = document.createElement('a');
-  a.href = url; a.download = `qostanai-run-${snapshot.runId}.json`; a.click();
+  a.href = url; a.download = `zauyt-ai-run-${snapshot.runId}.json`; a.click();
   window.setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
@@ -83,7 +83,7 @@ export default function ArchivePanel({ currentRunId, currentRevision }: { curren
       {error && <p className="archive-error" role="alert">{error}{report && ' Ниже остаётся ранее загруженный снимок.'}</p>}
       {!busy && !error && !report && <div className="scenario-empty"><div><strong>Архив пока пуст</strong><p>Здесь появятся сохранённые сценарии этой базы.</p></div></div>}
       {report && s && summary && <div className="archive-report" aria-busy={busy}>
-        <div className="archive-print-heading">Qostanai Twin · Отчёт производственного сценария</div>
+        <div className="archive-print-heading">Zauyt AI · Отчёт производственного сценария</div>
         <div className="archive-report-title"><div><span className="eyebrow">{report.runId === currentRunId ? 'СНИМОК ТЕКУЩЕГО СЦЕНАРИЯ' : 'АРХИВНЫЙ СЦЕНАРИЙ'}</span><h3>{summary.ended ? 'Итоги смены' : `Промежуточный срез на ${modelTime(s.elapsedSec)}`}</h3><p>Сохранён {realTime(report.savedAt)} · время сценария {modelTime(s.elapsedSec)}</p></div><span className="history-source synthetic">{sourceNames[report.source]}</span></div>
         
         <p className="archive-readonly">Сохранённый снимок для просмотра. Управление текущей линией — в разделе «Линия».</p>

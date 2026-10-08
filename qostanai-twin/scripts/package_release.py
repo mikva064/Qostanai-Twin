@@ -80,7 +80,7 @@ def build_release(project, pitch, destination):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Собрать переносимый комплект Qostanai Twin')
+    parser = argparse.ArgumentParser(description='Собрать переносимый комплект Zauyt AI')
     parser.add_argument('--output', type=Path)
     parser.add_argument('--pitch', type=Path, default=ROOT.parent / 'pitch-oct09' / PITCH_NAME)
     parser.add_argument('--verify', type=Path)
@@ -89,5 +89,5 @@ if __name__ == '__main__':
         print(json.dumps(verify_release(args.verify), ensure_ascii=False))
     else:
         version = json.loads((ROOT / 'package.json').read_text(encoding='utf-8'))['version']
-        target = args.output or ROOT.parent / f'qostanai-twin-v{version}-demo.zip'
+        target = args.output or ROOT.parent / f'zauyt-ai-v{version}-demo.zip'
         print(json.dumps(dict(path=str(target), **build_release(ROOT, args.pitch, target)), ensure_ascii=False))

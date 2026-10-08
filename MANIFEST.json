@@ -1,11 +1,11 @@
 {
   "version": "0.12.0",
-  "builtAt": "2026-10-06T06:42:36.835566+00:00",
+  "builtAt": "2026-10-08T09:56:42.744996+00:00",
   "files": [
     {
       "path": "START-HERE.txt",
-      "bytes": 4240,
-      "sha256": "e85c57f1afe7b18cc942a43b8b6908012baf6c316e959963087de96193ffc044"
+      "bytes": 4245,
+      "sha256": "ab0535e9b029965f0c8b48919435098ba89e8f90cc3722bea30e7a098608ecde"
     },
     {
       "path": "pitch-oct09/Qostanai-Twin-Selection-09-Oct-2026-v3.pptx",
@@ -24,18 +24,18 @@
     },
     {
       "path": "qostanai-twin/README.md",
-      "bytes": 34857,
-      "sha256": "9b963e82b8a92e3acebc8f3059cf0f80a4fd75f8d515914c6a445f5adb30572c"
+      "bytes": 34847,
+      "sha256": "6c873d308b7e0165501480c3f2e3e0a63f180786f4b239de74ca878f301182a4"
     },
     {
       "path": "qostanai-twin/backend/__init__.py",
-      "bytes": 31,
-      "sha256": "aee1632d91713b6c3793d0f5dbd19d9d769c294ae53ae2babc6cdbf8287e6485"
+      "bytes": 27,
+      "sha256": "9c17d5b595ac75d223e27953abbd84cef892a45f340460747b6ce4891688d643"
     },
     {
       "path": "qostanai-twin/backend/agent.py",
-      "bytes": 23323,
-      "sha256": "f6816f72ab16c0cb711eadf0caee11354f9d638fcf9abe074d02d6f416068a6a"
+      "bytes": 23619,
+      "sha256": "ea1c75f881538903b03a76346c884ad017593b6e68d1d4f96ee1f96590557500"
     },
     {
       "path": "qostanai-twin/backend/analysis.py",
@@ -44,8 +44,8 @@
     },
     {
       "path": "qostanai-twin/backend/api.py",
-      "bytes": 11586,
-      "sha256": "7a744e2df6dbc1f22e18a1c40a4ea37400ec688c36147ba45a25233bc210f61e"
+      "bytes": 11864,
+      "sha256": "a690b147f5a661c098d799fe2ac7d3062ee79a154beb9bfbc2f56b2650f7cb27"
     },
     {
       "path": "qostanai-twin/backend/history_import.py",
@@ -109,8 +109,8 @@
     },
     {
       "path": "qostanai-twin/backend/test_release.py",
-      "bytes": 10400,
-      "sha256": "a37e3a652efd5d12aef21c8b982d2621debeed31665d264b95a31f31ce55f0ac"
+      "bytes": 10383,
+      "sha256": "016594972bca76a3d0346c655efdc89df3af78f0dfb1a42c2b4d0e846ec5d946"
     },
     {
       "path": "qostanai-twin/check.cmd",
@@ -118,9 +118,9 @@
       "sha256": "d854281772ea93a32000c9185d7b7363d65a8236baef08d27802fa82ddd3b7a3"
     },
     {
-      "path": "qostanai-twin/dist/assets/index-BAFsNUkt.js",
-      "bytes": 355340,
-      "sha256": "25e9e8d8b99a9e276526eac1992a38c1f5db08c70713e818ec2e42d09730182f"
+      "path": "qostanai-twin/dist/assets/index-BOtGj4qo.js",
+      "bytes": 355310,
+      "sha256": "a4c99aaab6c2ec79ed9fa4d5efe97742e12526e739763bf712662ebe6aefb05c"
     },
     {
       "path": "qostanai-twin/dist/assets/index-Du6qyTx7.css",
@@ -130,7 +130,7 @@
     {
       "path": "qostanai-twin/dist/build-info.json",
       "bytes": 66,
-      "sha256": "b757f24f160d47ff69c2284585637569b6e7013d70fc3da6f4f3d8dbb79a28fd"
+      "sha256": "a734034db1e441f90cfb4a393217a003cc57c1a11896ff7f263089ed834b346f"
     },
     {
       "path": "qostanai-twin/dist/examples/demo-shift.csv",
@@ -139,13 +139,13 @@
     },
     {
       "path": "qostanai-twin/dist/favicon.svg",
-      "bytes": 246,
-      "sha256": "543eecc564108469e08b3b6b8689219ae320d8c9b0c8895a98ace8f900a6571a"
+      "bytes": 239,
+      "sha256": "eadb988c97e007527d2487b495475925c0917e51297326bfcb7760f52443f10c"
     },
     {
       "path": "qostanai-twin/dist/index.html",
-      "bytes": 779,
-      "sha256": "4c2c67d22288932836c60ceeda6f279bae5212a57e6526e5bd8ea86816ca9a56"
+      "bytes": 731,
+      "sha256": "e53b4df5178a713edc4bcbea5220d608c6d0493cf6dfe8adc3783ebf79074782"
     },
     {
       "path": "qostanai-twin/docs/AGENT_EVALUATION.md",
@@ -154,8 +154,8 @@
     },
     {
       "path": "qostanai-twin/docs/AI_AGENT.md",
-      "bytes": 11099,
-      "sha256": "e2573b43981c42fc008059ff1d15e9bf59d5e9269187576c95de07233e01017c"
+      "bytes": 11146,
+      "sha256": "df5c527456444809f6a668649b20dfcdbb2869dc8c1a89d3a263c108dfd88559"
     },
     {
       "path": "qostanai-twin/docs/ARCHIVE.md",
@@ -199,23 +199,23 @@
     },
     {
       "path": "qostanai-twin/docs/PITCH_SCRIPT.md",
-      "bytes": 25164,
-      "sha256": "4487c34d8604c28c22955853c9bcb5fc3798f49983c9a7c6964a0095a94e10b4"
+      "bytes": 25149,
+      "sha256": "ccec8457f30148141605e21f32183ae51055e68a5d97b93c5d1f2c45dcfde49e"
     },
     {
       "path": "qostanai-twin/docs/RELEASE.md",
-      "bytes": 6624,
-      "sha256": "8f1a81484292254559f11fdffeaf4e1f31385201c42db204fa922529d4524d20"
+      "bytes": 6622,
+      "sha256": "35572a1fde36831477007262c1bfb0da67dbd155587b497f463d49af2f514b39"
     },
     {
       "path": "qostanai-twin/docs/START_HERE.txt",
-      "bytes": 4240,
-      "sha256": "e85c57f1afe7b18cc942a43b8b6908012baf6c316e959963087de96193ffc044"
+      "bytes": 4245,
+      "sha256": "ab0535e9b029965f0c8b48919435098ba89e8f90cc3722bea30e7a098608ecde"
     },
     {
       "path": "qostanai-twin/docs/VERIFICATION.md",
-      "bytes": 42449,
-      "sha256": "852fa8dff550b3e6495bf516380917f7a8033d0b60dc9a43c1ad7e83ac1b964e"
+      "bytes": 43613,
+      "sha256": "0fc285b646dc8ab07bbb8657411466216a602909ee6885313e949110c39d277c"
     },
     {
       "path": "qostanai-twin/docs/agent-eval-cases.json",
@@ -264,18 +264,18 @@
     },
     {
       "path": "qostanai-twin/index.html",
-      "bytes": 681,
-      "sha256": "7ef39832604053185d7af2041ef33507bc4e61685d7b6ca010291b24301dfa08"
+      "bytes": 633,
+      "sha256": "613904d6f593ff7e6ece4498875569f85cb900f8f07d7e816a5c76f09dde2f4b"
     },
     {
       "path": "qostanai-twin/package-lock.json",
-      "bytes": 39403,
-      "sha256": "9fcc9c8f36fa351960d72d7bca14f905055acf8b8228f1b1d99348462928b430"
+      "bytes": 39393,
+      "sha256": "b9d40c5ed7206b4973fb49889274163661943314adec7abd5b7dac95f04adbea"
     },
     {
       "path": "qostanai-twin/package.json",
-      "bytes": 822,
-      "sha256": "0d67344091ae8b1b4ef148a03048292413e59676f1db3a9cd4dddda3ba654e77"
+      "bytes": 817,
+      "sha256": "c4f98d279d579a8799bfd19e3c98a4ea7d6519b8a55af455071938674a37388d"
     },
     {
       "path": "qostanai-twin/public/examples/demo-shift.csv",
@@ -284,8 +284,8 @@
     },
     {
       "path": "qostanai-twin/public/favicon.svg",
-      "bytes": 246,
-      "sha256": "543eecc564108469e08b3b6b8689219ae320d8c9b0c8895a98ace8f900a6571a"
+      "bytes": 239,
+      "sha256": "eadb988c97e007527d2487b495475925c0917e51297326bfcb7760f52443f10c"
     },
     {
       "path": "qostanai-twin/requirements.txt",
@@ -314,13 +314,13 @@
     },
     {
       "path": "qostanai-twin/scripts/package_release.py",
-      "bytes": 5772,
-      "sha256": "b9e97ef2fe4a4564cc07fb07bb06c54cea56778ce3e6bd2612cbcb79f28fa43c"
+      "bytes": 5855,
+      "sha256": "84c9d8c3d0d99e0d0af01a03cb875324d63c0f4ac4ba2b173155ecc3c9e02cf7"
     },
     {
       "path": "qostanai-twin/scripts/runtime_check.py",
-      "bytes": 10708,
-      "sha256": "8cd3da400f0cc83ca69551910834d8d12e82c5dd9df4b143e8065fa222ded8de"
+      "bytes": 10684,
+      "sha256": "190baf11834512d88277592cd80ec9518e0d60e3c534890bf3905c6418aac7d7"
     },
     {
       "path": "qostanai-twin/setup.cmd",
@@ -334,18 +334,18 @@
     },
     {
       "path": "qostanai-twin/src/App.tsx",
-      "bytes": 30448,
-      "sha256": "6da0d32c4468fe1daa9ec3cc12e951a1464302150a86de7f8c4159456c6b68c2"
+      "bytes": 30433,
+      "sha256": "2ca726754ae8158fb4d88b63de3718183465b56e82fbb1996f970267d48e9a76"
     },
     {
       "path": "qostanai-twin/src/ArchivePanel.tsx",
-      "bytes": 13378,
-      "sha256": "347ac05d8f56cfaedb02598e3c6a4796ef3eb78d52cc05cb7e8facc7b9598a65"
+      "bytes": 13373,
+      "sha256": "3080e0977ce7c6c61bf3e552e53a013c07e5827ed6c9ac2c152486587f9cfc96"
     },
     {
       "path": "qostanai-twin/src/CaseDataPanel.tsx",
       "bytes": 16007,
-      "sha256": "21958be59b79df97eb988eb0b86be6c84f730943f48c1a9977f9c8bd313510fe"
+      "sha256": "e0b36adbdbcfa358b7d35dd08d42adab92c9d493e4622fbd22c49ee9148cfb45"
     },
     {
       "path": "qostanai-twin/src/DemoGuide.tsx",
@@ -355,7 +355,7 @@
     {
       "path": "qostanai-twin/src/HistoryComparisonPanel.tsx",
       "bytes": 11966,
-      "sha256": "5f269c6a5960f6be3404111151264dd46cc44fa30e4aedd7f6212f62dc82de95"
+      "sha256": "ddd6980717941b4bcbb6a862bcfa02087907f1ddf662dee81b8fcf6c59e7ea4d"
     },
     {
       "path": "qostanai-twin/src/HistoryPanel.tsx",
@@ -364,13 +364,13 @@
     },
     {
       "path": "qostanai-twin/src/ReadinessPanel.tsx",
-      "bytes": 4210,
-      "sha256": "cc0e156c1acbe369289431d857dc5e5f9bc5894a895370e5ef6a34cea95722d9"
+      "bytes": 4249,
+      "sha256": "1c32ac1375d3c7b331648a7d251761544f132a8e330a636bed509c4474d2c42d"
     },
     {
       "path": "qostanai-twin/src/ScenarioPanel.tsx",
-      "bytes": 10882,
-      "sha256": "def8984cf1563bafc4ccc18e6da75c012f5373b31ce051fbdd977a5b04b14980"
+      "bytes": 10904,
+      "sha256": "c752d89865a102e70ce72abb972449df41196dfedbc065cc82399e142de39ed2"
     },
     {
       "path": "qostanai-twin/src/SettingsPanel.tsx",
@@ -469,8 +469,8 @@
     },
     {
       "path": "qostanai-twin/src/readiness.ts",
-      "bytes": 5816,
-      "sha256": "3102e772d0cf192c66264cfc796404e1934b2f86e5e5c5d98454a6901aa17ae4"
+      "bytes": 5806,
+      "sha256": "5b321730f1aa38fca5d37eead98a165375f0b5d7080ae167712411921d58ae1a"
     },
     {
       "path": "qostanai-twin/src/settings.css",
@@ -539,8 +539,8 @@
     },
     {
       "path": "qostanai-twin/tests/readiness.test.ts",
-      "bytes": 4728,
-      "sha256": "513bcd43cf6b9e410a9fd90ced29590481d01ac1cc9751abe2e31905235bd3ee"
+      "bytes": 4718,
+      "sha256": "47e79ae9fa26488ce6e92acee382b6f56c5191fc39c6c636a06b5512b309a99f"
     },
     {
       "path": "qostanai-twin/tests/simulation.test.ts",

@@ -143,7 +143,7 @@ export default function App() {
 
   if (!snapshot && activeSection === 'agent') return <main className="case-standalone"><a href="#overview">← К линии</a><AgentPanel/></main>;
   if (!snapshot && activeSection === 'case') return <main className="case-standalone"><a href="#overview">← К линии</a><CaseDataPanel/></main>;
-  if (!snapshot) return <div className="loading-state"><span className="brand-mark">Q</span><div><p>{error || 'Подключение к производственной линии…'}</p>{error && <button className="button" onClick={refresh}>Повторить подключение</button>}<p><a href="#case">Открыть показатели производства</a></p></div></div>;
+  if (!snapshot) return <div className="loading-state"><span className="brand-mark">Z</span><div><p>{error || 'Подключение к производственной линии…'}</p>{error && <button className="button" onClick={refresh}>Повторить подключение</button>}<p><a href="#case">Открыть показатели производства</a></p></div></div>;
   const { state, forecast: prediction } = snapshot;
   const { paused, speed } = snapshot.controls;
   const disconnected = Boolean(error) || stale;
@@ -168,7 +168,7 @@ export default function App() {
   return <div className="app-shell">
     <a className="skip-link" href="#main">Перейти к содержимому</a>
     <aside className="sidebar">
-      <a className="brand" href="#overview" aria-label="Qostanai Twin, обзор"><span className="brand-mark">Q<span/></span><span>QOSTANAI<strong>TWIN<span className="brand-dot">.</span></strong></span></a>
+      <a className="brand" href="#overview" aria-label="Zauyt AI, обзор"><span className="brand-mark">Z<span/></span><span>ZAUYT<strong>AI<span className="brand-dot">.</span></strong></span></a>
       <div className="workspace-label">ПРОИЗВОДСТВО</div>
       <nav aria-label="Основная навигация">
         {([['overview', 'grid', 'Обзор'], ['case', 'line', 'Показатели'], ['agent', 'pulse', 'ИИ-агент'], ['production', 'line', 'Линия'], ['scenarios', 'layers', 'Сценарии'], ['events', 'pulse', 'События'], ['history', 'clock', 'История'], ['archive', 'box', 'Архив'], ['settings', 'tool', 'Настройки'], ['demo', 'play', 'Показ']] as const).map(([id, icon, label]) => <a key={id} aria-label={label} aria-current={activeSection === id ? 'location' : undefined} className={activeSection === id ? 'nav-item active' : 'nav-item'} href={`#${id}`} onClick={() => setActiveSection(id)}><Icon name={icon}/><span>{label}</span>{id === 'events' && activeIncidents.length > 0 && <span className="nav-count">{activeIncidents.length}</span>}</a>)}
@@ -256,7 +256,7 @@ export default function App() {
           setSelectedId('P03'); setNotice('Новый сценарий создан с заданными параметрами.');
           return latest.current!.runId;
         }}/>
-        <footer className="page-footer"><span>Qostanai Twin <span>·</span> Цифровой двойник</span><details className="data-help"><summary>О данных и расчётах</summary><p>Линия показывает симуляцию одного участка с заданными нормативами. Подключения к оборудованию нет. Прогноз выпуска предполагает сохранение текущих режимов; модель поломок не обучена. Показатели в отдельном разделе взяты из тестового документа кейса.</p></details></footer>
+        <footer className="page-footer"><span>Zauyt AI <span>·</span> Цифровой двойник</span><details className="data-help"><summary>О данных и расчётах</summary><p>Линия показывает симуляцию одного участка с заданными нормативами. Подключения к оборудованию нет. Прогноз выпуска предполагает сохранение текущих режимов; модель поломок не обучена. Показатели в отдельном разделе взяты из тестового документа кейса.</p></details></footer>
         </div>
       </div>
     </main>

@@ -109,9 +109,9 @@ class RuntimeServerTests(unittest.TestCase):
         state = dict(schemaVersion=2, runId='test-run', revision=1, controls={'paused': True},
                      state={'elapsedSec': 2700}, capabilities=['configure_line', 'history_configuration'])
         for version, capabilities, title, expected in [
-            ('0.8.0', state['capabilities'], 'Qostanai Twin API', 'ready'),
-            ('0.4.0', [], 'Qostanai Twin API', 'outdated'),
-            ('0.8.0', [], 'Qostanai Twin API', 'outdated'),
+            ('0.8.0', state['capabilities'], 'Zauyt AI API', 'ready'),
+            ('0.4.0', [], 'Zauyt AI API', 'outdated'),
+            ('0.8.0', [], 'Zauyt AI API', 'outdated'),
             ('0.8.0', state['capabilities'], 'Other service', 'occupied'),
         ]:
             with self.subTest(expected=expected), patch.object(runtime.socket, 'create_connection', return_value=MagicMock()), patch.object(runtime, 'request_text', return_value=(runtime.ROOT / 'dist/index.html').read_text(encoding='utf-8')), patch.object(runtime, 'request_json', side_effect=[
@@ -122,7 +122,7 @@ class RuntimeServerTests(unittest.TestCase):
 
     def test_same_api_with_different_served_interface_requires_restart(self):
         with patch.object(runtime.socket, 'create_connection', return_value=MagicMock()), patch.object(runtime, 'request_text', return_value='<html>older interface</html>'), patch.object(runtime, 'request_json', side_effect=[
-            {'info': {'title': 'Qostanai Twin API', 'version': '0.8.0'}},
+            {'info': {'title': 'Zauyt AI API', 'version': '0.8.0'}},
             dict(schemaVersion=2, runId='test-run', revision=1, controls={'paused': True}, state={'elapsedSec': 2700}, capabilities=['configure_line', 'history_configuration']),
         ]):
             result = runtime.inspect_server()

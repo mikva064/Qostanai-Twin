@@ -11,7 +11,7 @@ async function check(overrides: Record<string, unknown> = {}) {
   const snapshot = structuredClone(fixture.initial);
   snapshot.capabilities = ['configure_line', 'history_configuration'];
   const responses: Record<string, unknown> = {
-    '/openapi.json': { info: { title: 'Qostanai Twin API', version: '0.8.0' } },
+    '/openapi.json': { info: { title: 'Zauyt AI API', version: '0.8.0' } },
     '/api/v1/twin': snapshot,
     '/api/v1/history/imports': { imports: [history] },
     '/api/v1/history/example.csv': csv,
@@ -49,7 +49,7 @@ test('ready API, exact demo state, saved history and sample pass using GET only'
 test('old API remains readable while missing capabilities and empty history require preparation', async () => {
   const old = structuredClone(fixture.recovered); delete old.capabilities;
   const result = await check({
-    '/openapi.json': { info: { title: 'Qostanai Twin API', version: '0.4.0' } },
+    '/openapi.json': { info: { title: 'Zauyt AI API', version: '0.4.0' } },
     '/api/v1/twin': old,
     '/api/v1/history/imports': { imports: [] },
   });

@@ -160,7 +160,7 @@ def create_app(db_path=None, start_ticker=True, clock=None, agent_factory=None):
                 await task
             service.close()
 
-    app = FastAPI(title='Qostanai Twin API', version='0.8.0', lifespan=lifespan)
+    app = FastAPI(title='Zauyt AI API', version='0.8.0', lifespan=lifespan)
 
     @app.middleware('http')
     async def local_requests(request: Request, call_next):

@@ -27,7 +27,7 @@ function downloadReport(report: ScenarioComparison) {
   const url = URL.createObjectURL(new Blob([JSON.stringify(report, null, 2)], { type: 'application/json;charset=utf-8' }));
   const a = document.createElement('a');
   a.href = url;
-  a.download = `qostanai-${report.stationId}-${report.baseElapsedSec}-${report.runId.slice(0, 8)}.json`;
+  a.download = `zauyt-ai-${report.stationId}-${report.baseElapsedSec}-${report.runId.slice(0, 8)}.json`;
   a.click();
   window.setTimeout(() => URL.revokeObjectURL(url), 1000);
 }

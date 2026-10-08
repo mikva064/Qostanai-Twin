@@ -1,4 +1,4 @@
-# Qostanai Twin
+# Zauyt AI
 
 MVP цифрового двойника автомобильного завода для Qostanai Industry Hackathon, кейс АО «Группа компаний АЛЛЮР». Версия 0.12.0; первичный отбор — 9 октября 2026 года.
 
@@ -9,8 +9,8 @@ MVP цифрового двойника автомобильного завод�
 Нужен Python 3.11+. Готовый интерфейс включён в репозиторий: Node.js понадобится только для разработки.
 
 ```powershell
-git clone https://github.com/mikva064/Qostanai-Twin.git
-cd Qostanai-Twin\qostanai-twin
+git clone https://github.com/mikva064/Zauyt-AI.git
+cd Zauyt-AI\qostanai-twin
 .\setup.cmd
 .\start.cmd
 ```

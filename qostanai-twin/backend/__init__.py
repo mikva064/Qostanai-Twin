@@ -1,1 +1,1 @@
-"""Qostanai Twin local API."""
+"""Zauyt AI local API."""
